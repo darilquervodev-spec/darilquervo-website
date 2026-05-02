@@ -1,0 +1,47 @@
+[
+  {
+    "id": "modular-home",
+    "category": "carpentry",
+    "name": "Modular Home Construction",
+    "description": "Built hundreds of modular homes across Japan — from foundation to roof, including framing, finishing, and safety compliance.",
+    "photo": ""
+  },
+  {
+    "id": "shop-renovation",
+    "category": "carpentry",
+    "name": "Shop Renovation",
+    "description": "Prepared a small retail space with custom shelving, fixtures, and structural repairs.",
+    "photo": ""
+  },
+  {
+    "id": "residential-wiring",
+    "category": "electrical",
+    "name": "Residential Wiring & Installation",
+    "description": "Full residential electrical installation including panels, outlets, lighting circuits, and troubleshooting for homes in the Philippines.",
+    "photo": ""
+  },
+  {
+    "id": "solar-system-setup",
+    "category": "electrical",
+    "name": "Solar System Setup",
+    "description": "Troubleshooting and installation of off-grid solar power systems for residential clients, including wiring and component checks.",
+    "photo": ""
+  },
+  {
+    "id": "solar-pv-calc",
+    "category": "android",
+    "name": "Solar PV Calc – Solar Designer",
+    "description": "A solar panel sizing and design calculator app for Android. Helps users calculate the right solar system for their needs.",
+    "photo": "",
+    "storeUrl": "",
+    "policyDate": "May 3, 2026"
+  },
+  {
+    "id": "personal-portfolio",
+    "category": "websites",
+    "name": "Personal Portfolio",
+    "description": "This website — built with HTML & CSS to present my skills and experience to potential employers and clients.",
+    "photo": "",
+    "storeUrl": "https://darilquervo.com"
+  }
+]

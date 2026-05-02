@@ -514,6 +514,59 @@ h2 {
   color: var(--text-muted);
 }
 
+.form-feedback {
+  border-radius: var(--radius-md);
+  padding: 0.7rem 1rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin-top: 0.25rem;
+}
+
+.form-success-msg {
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  color: #4ade80;
+}
+
+.form-error-msg {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #f87171;
+}
+
+.form-error-msg a {
+  color: #f87171;
+  font-weight: 600;
+}
+
+/* ── Project Card Photos ──────────────────────────────── */
+
+.project-img {
+  margin: -1.4rem -1.3rem 1.1rem;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  overflow: hidden;
+  height: 168px;
+  background: #0b1020;
+}
+
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.card:hover .project-img img {
+  transform: scale(1.05);
+}
+
+.projects-loading {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
 /* Footer */
 
 .footer {
@@ -535,3 +588,100 @@ h2 {
 .footer-note {
   opacity: 0.9;
 }
+
+/* ── Project Tabs ─────────────────────────────────────── */
+
+.project-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 1.5rem 0 0;
+}
+
+.project-subtabs {
+  display: none;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin: 0.75rem 0 0;
+}
+
+.project-subtabs.visible {
+  display: flex;
+}
+
+.tab-btn,
+.subtab-btn {
+  padding: 0.42rem 1.05rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: transparent;
+  color: var(--text-muted);
+  font-family: inherit;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast);
+}
+
+.tab-btn { font-size: 0.83rem; }
+.subtab-btn { font-size: 0.77rem; padding: 0.32rem 0.85rem; }
+
+.tab-btn:hover,
+.subtab-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tab-btn.active,
+.subtab-btn.active {
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  border-color: transparent;
+  color: #0b1120;
+  font-weight: 600;
+}
+
+/* ── Project Badges ───────────────────────────────────── */
+
+.project-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  margin-bottom: 0.65rem;
+}
+
+.badge-carpentry  { background: rgba(245,158,11,0.18); color: #f59e0b; border: 1px solid rgba(245,158,11,0.4); }
+.badge-electrical { background: rgba(239,68,68,0.15);  color: #f87171; border: 1px solid rgba(239,68,68,0.35); }
+.badge-android    { background: rgba(34,197,94,0.15);  color: #4ade80; border: 1px solid rgba(34,197,94,0.35); }
+.badge-ios        { background: rgba(56,189,248,0.15); color: #38bdf8; border: 1px solid rgba(56,189,248,0.35); }
+.badge-website    { background: rgba(167,139,250,0.15);color: #a78bfa; border: 1px solid rgba(167,139,250,0.35); }
+
+/* ── App / Project Links ──────────────────────────────── */
+
+.app-store-links {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.app-link {
+  display: inline-block;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.app-link:hover         { border-color: var(--accent); color: var(--accent); }
+.app-link-policy        { border-color: rgba(167,139,250,0.4); color: #a78bfa; }
+.app-link-policy:hover  { border-color: #a78bfa; }
+.app-link-support       { border-color: rgba(74,222,128,0.35); color: #4ade80; }
+.app-link-support:hover { border-color: #4ade80; }

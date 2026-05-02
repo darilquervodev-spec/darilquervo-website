@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Manager – DarilWorks</title>
+  <style>
+    :root {
+      --accent: #38bdf8;
+      --accent-soft: rgba(56,189,248,0.12);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --card-bg: rgba(15,23,42,0.98);
+      --border: rgba(148,163,184,0.22);
+      --radius-lg: 14px;
+      --radius-md: 10px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 0;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    header {
+      background: linear-gradient(to right, rgba(15,23,42,0.95), rgba(15,23,42,0.92));
+      border-bottom: 1px solid var(--border);
+      padding: 0.9rem 0;
+      position: sticky; top: 0; z-index: 10;
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-weight: 700; font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--text-main); }
+    .logo span { color: var(--accent); }
+    .back-link { font-size: 0.85rem; color: var(--accent); text-decoration: none; }
+    .back-link:hover { text-decoration: underline; }
+    .container { width: min(1100px, 100% - 2rem); margin-inline: auto; }
+    main { padding: 2.5rem 0 5rem; }
+    .page-title { font-size: clamp(1.5rem, 3vw, 2rem); margin: 0 0 0.35rem; }
+    .page-sub { color: var(--text-muted); font-size: 0.95rem; margin: 0 0 2rem; }
+
+    /* Layout */
+    .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; align-items: start; }
+    @media (max-width: 800px) { .layout { grid-template-columns: 1fr; } }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+    .card-title { font-size: 1rem; font-weight: 700; margin: 0 0 1.25rem; letter-spacing: 0.04em; }
+
+    /* Form */
+    .field { margin-bottom: 1rem; }
+    label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.3rem; }
+    input[type="text"], input[type="url"], textarea, select {
+      width: 100%;
+      background: #020617;
+      border: 1px solid rgba(148,163,184,0.3);
+      border-radius: var(--radius-md);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.93rem;
+      padding: 0.55rem 0.75rem;
+      outline: none;
+      transition: border-color 0.18s;
+    }
+    input:focus, textarea:focus, select:focus { border-color: var(--accent); }
+    select { cursor: pointer; }
+    textarea { resize: vertical; min-height: 90px; }
+    .field-hint { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+    /* Category badge preview */
+    .cat-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .cat-pill { padding: 0.3rem 0.8rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; border: 2px solid transparent; transition: all 0.15s; opacity: 0.45; }
+    .cat-pill.active { opacity: 1; }
+    .cat-pill[data-cat="carpentry"]  { background: rgba(245,158,11,0.18); color: #f59e0b; border-color: rgba(245,158,11,0.5); }
+    .cat-pill[data-cat="electrical"] { background: rgba(239,68,68,0.15);  color: #f87171; border-color: rgba(239,68,68,0.45); }
+    .cat-pill[data-cat="android"]    { background: rgba(34,197,94,0.15);  color: #4ade80; border-color: rgba(34,197,94,0.45); }
+    .cat-pill[data-cat="ios"]        { background: rgba(56,189,248,0.15); color: #38bdf8; border-color: rgba(56,189,248,0.45); }
+    .cat-pill[data-cat="websites"]   { background: rgba(167,139,250,0.15);color: #a78bfa; border-color: rgba(167,139,250,0.45); }
+
+    /* App-only fields */
+    .app-only { display: none; }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 0.65rem 1.4rem; border-radius: 999px; border: none; cursor: pointer;
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #0b1120; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em;
+      text-transform: uppercase; width: 100%; margin-top: 0.5rem;
+      transition: filter 0.15s, transform 0.15s;
+    }
+    .btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
+
+    .btn-copy {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.4rem 0.9rem; border-radius: 999px; border: 1px solid rgba(56,189,248,0.4);
+      background: transparent; color: var(--accent); font-size: 0.82rem; cursor: pointer;
+      font-family: inherit; letter-spacing: 0.04em; transition: background 0.15s;
+    }
+    .btn-copy:hover { background: var(--accent-soft); }
+    .btn-copy.copied { border-color: rgba(74,222,128,0.5); color: #4ade80; }
+
+    /* Output */
+    .output-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; }
+    .output-label { font-size: 0.85rem; color: var(--text-muted); }
+    #json-output {
+      width: 100%; background: #020617; border: 1px solid var(--border);
+      border-radius: var(--radius-md); color: #4ade80; font-family: "Consolas", "Courier New", monospace;
+      font-size: 0.8rem; padding: 0.85rem; resize: vertical; min-height: 200px;
+      outline: none; line-height: 1.6;
+    }
+
+    /* App store URLs box */
+    .url-box { margin-top: 1rem; display: none; }
+    .url-box-inner {
+      background: rgba(56,189,248,0.07); border: 1px solid rgba(56,189,248,0.22);
+      border-radius: var(--radius-md); padding: 1rem;
+    }
+    .url-box h3 { margin: 0 0 0.6rem; font-size: 0.9rem; color: var(--accent); }
+    .url-item { margin-bottom: 0.5rem; font-size: 0.83rem; }
+    .url-item span { color: var(--text-muted); display: block; }
+    .url-item a { color: var(--accent); word-break: break-all; }
+
+    /* Steps */
+    .steps { margin-top: 1.25rem; }
+    .steps h3 { font-size: 0.9rem; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 0.75rem; }
+    .step { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .step-num {
+      flex-shrink: 0; width: 1.5rem; height: 1.5rem; border-radius: 50%;
+      background: var(--accent-soft); border: 1px solid rgba(56,189,248,0.35);
+      color: var(--accent); font-size: 0.75rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; margin-top: 0.1rem;
+    }
+    .step p { margin: 0; font-size: 0.88rem; color: var(--text-muted); }
+    .step p strong { color: var(--text-main); }
+    .step code { background: rgba(56,189,248,0.1); color: var(--accent); padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.82rem; }
+
+    /* Photo step */
+    .photo-step { background: rgba(245,158,11,0.07); border: 1px solid rgba(245,158,11,0.2); border-radius: var(--radius-md); padding: 0.85rem 1rem; margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted); }
+    .photo-step strong { color: #f59e0b; }
+
+    /* Existing projects list */
+    .proj-list { margin-top: 1.5rem; }
+    .proj-list h3 { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 0.65rem; }
+    .proj-item { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid rgba(148,163,184,0.1); font-size: 0.88rem; }
+    .proj-item:last-child { border-bottom: none; }
+    .proj-badge { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.15rem 0.45rem; border-radius: 999px; }
+    .proj-badge.carpentry  { background: rgba(245,158,11,0.18); color: #f59e0b; }
+    .proj-badge.electrical { background: rgba(239,68,68,0.15);  color: #f87171; }
+    .proj-badge.android    { background: rgba(34,197,94,0.15);  color: #4ade80; }
+    .proj-badge.ios        { background: rgba(56,189,248,0.15); color: #38bdf8; }
+    .proj-badge.websites   { background: rgba(167,139,250,0.15);color: #a78bfa; }
+    .proj-name { color: var(--text-main); }
+    .proj-links a { font-size: 0.75rem; color: var(--accent); text-decoration: none; margin-left: 0.5rem; }
+    .proj-links a:hover { text-decoration: underline; }
+
+    .empty-msg { color: var(--text-muted); font-size: 0.88rem; font-style: italic; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <a href="index.html" class="logo">Daril<span>Works</span></a>
+    <a href="index.html" class="back-link">← View Portfolio</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <h1 class="page-title">Project Manager</h1>
+    <p class="page-sub">Add new projects without touching any code. Fill the form → copy the entry → paste into projects.json on GitHub.</p>
+
+    <div class="layout">
+
+      <!-- ── LEFT: Form ── -->
+      <div>
+        <div class="card">
+          <p class="card-title">Add New Project</p>
+
+          <!-- Category pills -->
+          <div class="field">
+            <label>Category</label>
+            <div class="cat-row" id="cat-row">
+              <button type="button" class="cat-pill active" data-cat="carpentry">Carpentry</button>
+              <button type="button" class="cat-pill" data-cat="electrical">Electrical</button>
+              <button type="button" class="cat-pill" data-cat="android">Android</button>
+              <button type="button" class="cat-pill" data-cat="ios">iOS</button>
+              <button type="button" class="cat-pill" data-cat="websites">Website</button>
+            </div>
+            <input type="hidden" id="f-category" value="carpentry">
+          </div>
+
+          <div class="field">
+            <label for="f-name">Project / App Name</label>
+            <input type="text" id="f-name" placeholder="e.g. Solar PV Calc – Solar Designer">
+          </div>
+
+          <div class="field">
+            <label for="f-desc">Description</label>
+            <textarea id="f-desc" placeholder="What does this project do? Who is it for? (1–3 sentences)"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="f-photo">Photo Filename (optional)</label>
+            <input type="text" id="f-photo" placeholder="e.g. solar-pv-calc.jpg">
+            <p class="field-hint">Upload your image to <code>assets/projects/</code> on GitHub first, then enter just the filename here.</p>
+          </div>
+
+          <div class="field app-only" id="field-store">
+            <label for="f-store" id="label-store">Play Store URL</label>
+            <input type="url" id="f-store" placeholder="https://play.google.com/store/apps/details?id=...">
+          </div>
+
+          <div class="field app-only" id="field-policy-date">
+            <label for="f-date">Privacy Policy Date</label>
+            <input type="text" id="f-date" placeholder="e.g. May 3, 2026">
+          </div>
+
+          <button type="button" class="btn-primary" id="btn-generate">Generate Entry</button>
+        </div>
+
+        <!-- Existing projects -->
+        <div class="card" style="margin-top:1.25rem">
+          <p class="card-title">Current Projects</p>
+          <div id="proj-list-inner">
+            <p class="empty-msg">Loading…</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── RIGHT: Output ── -->
+      <div>
+        <div class="card">
+          <p class="card-title">Generated JSON Entry</p>
+          <div class="output-header">
+            <span class="output-label">Copy this and paste it into <code>projects.json</code></span>
+            <button type="button" class="btn-copy" id="btn-copy">Copy</button>
+          </div>
+          <textarea id="json-output" readonly placeholder="Fill the form and click Generate Entry…"></textarea>
+
+          <!-- App store URLs (shown for android/ios only) -->
+          <div class="url-box" id="url-box">
+            <div class="url-box-inner">
+              <h3>Use these URLs in app stores</h3>
+              <div class="url-item">
+                <span>Privacy Policy URL:</span>
+                <a href="#" id="url-policy" target="_blank"></a>
+              </div>
+              <div class="url-item">
+                <span>Support URL:</span>
+                <a href="#" id="url-support" target="_blank"></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Steps -->
+          <div class="steps">
+            <h3>How to publish</h3>
+            <div class="step">
+              <div class="step-num">1</div>
+              <p><strong>Copy</strong> the JSON entry above using the Copy button.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <p>Go to your GitHub repo and open <strong>projects.json</strong>. Click the pencil icon to edit.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <p>Find the last <code>}</code> before the closing <code>]</code>. Add a comma after it, then paste your new entry.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">4</div>
+              <p>Click <strong>Commit changes</strong>. Your project will appear on the site within ~1 minute.</p>
+            </div>
+          </div>
+
+          <div class="photo-step">
+            <strong>To add a photo:</strong> Go to your repo → <code>assets/projects/</code> → click <strong>Upload files</strong> → upload your image. Use the filename you entered in the form above.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  var DOMAIN = 'https://darilquervo.com';
+
+  var BADGE_MAP = { carpentry: 'Carpentry', electrical: 'Electrical', android: 'Android', ios: 'iOS', websites: 'Website' };
+  var STORE_LABEL_MAP = { android: 'Play Store URL', ios: 'App Store URL', websites: 'Live Site URL' };
+
+  var selectedCat = 'carpentry';
+
+  // ── Category pills ─────────────────────────────────────────────────────────
+  document.querySelectorAll('.cat-pill').forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      document.querySelectorAll('.cat-pill').forEach(function (p) { p.classList.remove('active'); });
+      pill.classList.add('active');
+      selectedCat = pill.getAttribute('data-cat');
+      document.getElementById('f-category').value = selectedCat;
+      updateAppFields();
+    });
+  });
+
+  function updateAppFields() {
+    var isApp = selectedCat === 'android' || selectedCat === 'ios' || selectedCat === 'websites';
+    var needsStore = isApp;
+    var needsPolicy = selectedCat === 'android' || selectedCat === 'ios';
+    document.getElementById('field-store').style.display = needsStore ? '' : 'none';
+    document.getElementById('field-policy-date').style.display = needsPolicy ? '' : 'none';
+    var storeLabel = STORE_LABEL_MAP[selectedCat] || 'Store URL';
+    document.getElementById('label-store').textContent = storeLabel;
+  }
+
+  // ── Slug generator ─────────────────────────────────────────────────────────
+  function slugify(str) {
+    return str.toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '')
+      .trim()
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-');
+  }
+
+  // ── Generate JSON entry ────────────────────────────────────────────────────
+  document.getElementById('btn-generate').addEventListener('click', function () {
+    var name  = document.getElementById('f-name').value.trim();
+    var desc  = document.getElementById('f-desc').value.trim();
+    var photo = document.getElementById('f-photo').value.trim();
+    var store = document.getElementById('f-store').value.trim();
+    var date  = document.getElementById('f-date').value.trim();
+
+    if (!name || !desc) {
+      alert('Please fill in at least the Name and Description fields.');
+      return;
+    }
+
+    var id = slugify(name);
+    var isApp = selectedCat === 'android' || selectedCat === 'ios' || selectedCat === 'websites';
+    var needsPolicy = selectedCat === 'android' || selectedCat === 'ios';
+
+    var entry = { id: id, category: selectedCat, name: name, description: desc };
+    if (photo) { entry.photo = 'assets/projects/' + photo; }
+    else        { entry.photo = ''; }
+    if (isApp && store)      { entry.storeUrl = store; }
+    if (needsPolicy && date) { entry.policyDate = date; }
+    if (needsPolicy && !date){ entry.policyDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }); }
+
+    var json = JSON.stringify(entry, null, 2);
+    document.getElementById('json-output').value = json;
+
+    // App store URLs
+    var urlBox = document.getElementById('url-box');
+    if (needsPolicy) {
+      urlBox.style.display = 'block';
+      var policyUrl  = DOMAIN + '/privacy-policy.html?app=' + id;
+      var supportUrl = DOMAIN + '/support.html?app=' + id;
+      var aPolicy  = document.getElementById('url-policy');
+      var aSupport = document.getElementById('url-support');
+      aPolicy.href = policyUrl;   aPolicy.textContent = policyUrl;
+      aSupport.href = supportUrl; aSupport.textContent = supportUrl;
+    } else {
+      urlBox.style.display = 'none';
+    }
+  });
+
+  // ── Copy to clipboard ──────────────────────────────────────────────────────
+  document.getElementById('btn-copy').addEventListener('click', function () {
+    var output = document.getElementById('json-output').value;
+    if (!output) { alert('Generate an entry first.'); return; }
+    navigator.clipboard.writeText(output).then(function () {
+      var btn = document.getElementById('btn-copy');
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    }).catch(function () {
+      document.getElementById('json-output').select();
+      document.execCommand('copy');
+    });
+  });
+
+  // ── Load existing projects ─────────────────────────────────────────────────
+  fetch('projects.json')
+    .then(function (r) { return r.json(); })
+    .then(function (projects) {
+      var container = document.getElementById('proj-list-inner');
+      if (!projects.length) { container.innerHTML = '<p class="empty-msg">No projects yet.</p>'; return; }
+
+      var html = '';
+      projects.forEach(function (p) {
+        var badge = BADGE_MAP[p.category] || p.category;
+        var needsPolicy = p.category === 'android' || p.category === 'ios';
+        var links = '';
+        if (needsPolicy) {
+          links = '<span class="proj-links">'
+            + '<a href="privacy-policy.html?app=' + p.id + '" target="_blank">Policy</a>'
+            + '<a href="support.html?app=' + p.id + '" target="_blank">Support</a>'
+            + '</span>';
+        }
+        html += '<div class="proj-item">'
+          + '<div style="display:flex;align-items:center;gap:0.5rem">'
+          + '<span class="proj-badge ' + p.category + '">' + badge + '</span>'
+          + '<span class="proj-name">' + p.name + '</span>'
+          + '</div>'
+          + links
+          + '</div>';
+      });
+      container.innerHTML = html;
+    })
+    .catch(function () {
+      document.getElementById('proj-list-inner').innerHTML = '<p class="empty-msg">Could not load projects.json. Open via GitHub Pages or a local server.</p>';
+    });
+
+  // Init
+  updateAppFields();
+})();
+</script>
+</body>
+</html>
