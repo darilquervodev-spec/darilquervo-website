@@ -545,7 +545,7 @@ h2 {
   margin: -1.4rem -1.3rem 1.1rem;
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   overflow: hidden;
-  height: 168px;
+  aspect-ratio: 16 / 9;
   background: #0b1020;
 }
 

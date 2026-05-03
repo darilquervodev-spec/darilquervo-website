@@ -54,6 +54,9 @@
       border-radius: var(--radius-lg);
       padding: 1.25rem 1.5rem;
     }
+    .contact-highlight h2 { margin-top: 0; }
+    .contact-highlight .sub { margin: 0; color: var(--text-muted); font-size: 0.9rem; }
+    .contact-highlight .email-row { margin-bottom: 0.4rem; }
     footer { text-align: center; font-size: 0.82rem; color: var(--text-muted); padding: 1.5rem 0 2rem; border-top: 1px solid rgba(148,163,184,0.12); }
   </style>
 </head>
@@ -75,47 +78,44 @@
     </div>
 
     <div class="content-card">
-      <h2>Frequently Asked Questions</h2>
+      <div id="support-faq">
+        <h2>Frequently Asked Questions</h2>
 
-      <h3>The app won't open or keeps crashing</h3>
-      <p>
-        Try these steps in order:
-        (1) Force close the app and reopen it.
-        (2) Restart your device.
-        (3) Clear the app's cache in your device settings.
-        (4) Uninstall and reinstall the app from the store.
-        (5) Make sure your device's operating system is up to date.
-      </p>
+        <h3>The app won't open or keeps crashing</h3>
+        <p>
+          Try these steps in order:
+          (1) Force close the app and reopen it.
+          (2) Restart your device.
+          (3) Clear the app's cache in your device settings.
+          (4) Uninstall and reinstall the app from the store.
+          (5) Make sure your device's operating system is up to date.
+        </p>
 
-      <h3>How do I delete my account or data?</h3>
-      <p>
-        To request deletion of your account or personal data, please email me at
-        <a href="mailto:darilquervo.dev@gmail.com">darilquervo.dev@gmail.com</a> with the subject
-        line <strong>"Data Deletion Request"</strong>. I will process your request within 7 business days.
-      </p>
+        <h3>How do I delete my account or data?</h3>
+        <p>
+          To request deletion of your account or personal data, please email me at
+          <a href="mailto:darilquervo.dev@gmail.com">darilquervo.dev@gmail.com</a> with the subject
+          line <strong>"Data Deletion Request"</strong>. I will process your request within 7 business days.
+        </p>
 
-      <h3>I found a bug or something isn't working correctly</h3>
-      <p>
-        Please report it by email. Include a description of what happened, what you expected, your device
-        model, and your OS version. Screenshots are very helpful.
-      </p>
+        <h3>I found a bug or something isn't working correctly</h3>
+        <p>
+          Please report it by email. Include a description of what happened, what you expected, your device
+          model, and your OS version. Screenshots are very helpful.
+        </p>
 
-      <h3>I have a feature suggestion</h3>
-      <p>
-        I'd love to hear it! Send your idea to
-        <a href="mailto:darilquervo.dev@gmail.com">darilquervo.dev@gmail.com</a>.
-      </p>
+        <h3>I have a feature suggestion</h3>
+        <p>
+          I'd love to hear it! Send your idea to
+          <a href="mailto:darilquervo.dev@gmail.com">darilquervo.dev@gmail.com</a>.
+        </p>
+      </div>
     </div>
 
     <div class="contact-highlight">
-      <h2 style="margin-top:0">Contact Support</h2>
-      <p style="margin-bottom:0.4rem">
-        <strong>Email:</strong>
-        <a href="mailto:darilquervo.dev@gmail.com">darilquervo.dev@gmail.com</a>
-      </p>
-      <p style="margin:0; color:var(--text-muted); font-size:0.9rem">
-        I typically respond within 1–3 business days.
-      </p>
+      <h2>Contact Support</h2>
+      <p class="email-row"><strong>Email:</strong> <a href="mailto:darilquervo.dev@gmail.com">darilquervo.dev@gmail.com</a></p>
+      <p class="sub">I typically respond within 1–3 business days.</p>
     </div>
   </div>
 </main>
@@ -141,6 +141,10 @@
       var platform = { android: 'Android', ios: 'iOS', websites: 'Website' }[app.category] || 'App';
       document.title = 'Support – ' + app.name;
       document.getElementById('app-label').textContent = platform + ' · ' + app.name;
+
+      if (app.supportContent) {
+        document.getElementById('support-faq').innerHTML = app.supportContent;
+      }
     })
     .catch(function () {});
 </script>
