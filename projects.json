@@ -59,7 +59,7 @@
     "category": "websites",
     "name": "Personal Portfolio",
     "description": "This website — built with HTML & CSS to present my skills and experience to potential employers and clients.",
-    "photo": "",
+    "photo": "assets/projects/website.png",
     "storeUrl": "https://darilquervo.com"
   },
   {
