@@ -28,15 +28,6 @@
     "photo": ""
   },
   {
-    "id": "solar-pv-calc",
-    "category": "android",
-    "name": "Solar PV Calc – Solar Designer",
-    "description": "A solar panel sizing and design calculator app for Android. Helps users calculate the right solar system for their needs.",
-    "photo": "",
-    "storeUrl": "",
-    "policyDate": "May 3, 2026"
-  },
-  {
     "id": "personal-portfolio",
     "category": "websites",
     "name": "Personal Portfolio",
