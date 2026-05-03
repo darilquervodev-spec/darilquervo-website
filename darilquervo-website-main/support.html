@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support</title>
+  <style>
+    :root {
+      --accent: #38bdf8;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --radius-lg: 14px;
+      --shadow-card: 0 14px 35px rgba(15,23,42,0.85);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 0;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.7;
+    }
+    header {
+      background: linear-gradient(to right, rgba(15,23,42,0.95), rgba(15,23,42,0.92));
+      border-bottom: 1px solid rgba(148,163,184,0.18);
+      padding: 1rem 0;
+    }
+    .container { width: min(860px, 100% - 2rem); margin-inline: auto; }
+    .logo-bar { display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-weight: 700; font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--text-main); }
+    .logo span { color: var(--accent); }
+    .back-link { font-size: 0.85rem; color: var(--accent); text-decoration: none; }
+    .back-link:hover { text-decoration: underline; }
+    main { padding: 3rem 0 5rem; }
+    .page-header { margin-bottom: 2.5rem; }
+    .app-label { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin: 0 0 0.5rem; }
+    .content-card {
+      background: radial-gradient(circle at top left, rgba(15,23,42,0.98), rgba(15,23,42,1));
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      border: 1px solid rgba(148,163,184,0.22);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 1.5rem;
+    }
+    h2 { font-size: 1.15rem; margin: 2rem 0 0.45rem; color: var(--text-main); }
+    h2:first-child { margin-top: 0; }
+    h3 { font-size: 1rem; margin: 1.5rem 0 0.3rem; color: var(--text-main); }
+    p { color: var(--text-muted); margin: 0 0 1rem; }
+    a { color: var(--accent); }
+    .contact-highlight {
+      background: rgba(56,189,248,0.08);
+      border: 1px solid rgba(56,189,248,0.25);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+    }
+    .contact-highlight h2 { margin-top: 0; }
+    .contact-highlight .sub { margin: 0; color: var(--text-muted); font-size: 0.9rem; }
+    .contact-highlight .email-row { margin-bottom: 0.4rem; }
+    footer { text-align: center; font-size: 0.82rem; color: var(--text-muted); padding: 1.5rem 0 2rem; border-top: 1px solid rgba(148,163,184,0.12); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container logo-bar">
+    <a href="index.html" class="logo">Daril<span>Works</span></a>
+    <a href="index.html#projects" class="back-link">← Back to Portfolio</a>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="page-header">
+      <span class="app-label" id="app-label">App</span>
+      <h1>Support</h1>
+      <p style="color:var(--text-muted); margin:0">Need help? You're in the right place.</p>
+    </div>
+
+    <div class="content-card">
+      <div id="support-faq">
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>The app won't open or keeps crashing</h3>
+        <p>
+          Try these steps in order:
+          (1) Force close the app and reopen it.
+          (2) Restart your device.
+          (3) Clear the app's cache in your device settings.
+          (4) Uninstall and reinstall the app from the store.
+          (5) Make sure your device's operating system is up to date.
+        </p>
+
+        <h3>How do I delete my account or data?</h3>
+        <p>
+          To request deletion of your account or personal data, please email me at
+          <a href="mailto:darilquervo.dev@gmail.com">darilquervo.dev@gmail.com</a> with the subject
+          line <strong>"Data Deletion Request"</strong>. I will process your request within 7 business days.
+        </p>
+
+        <h3>I found a bug or something isn't working correctly</h3>
+        <p>
+          Please report it by email. Include a description of what happened, what you expected, your device
+          model, and your OS version. Screenshots are very helpful.
+        </p>
+
+        <h3>I have a feature suggestion</h3>
+        <p>
+          I'd love to hear it! Send your idea to
+          <a href="mailto:darilquervo.dev@gmail.com">darilquervo.dev@gmail.com</a>.
+        </p>
+      </div>
+    </div>
+
+    <div class="contact-highlight">
+      <h2>Contact Support</h2>
+      <p class="email-row"><strong>Email:</strong> <a href="mailto:darilquervo.dev@gmail.com">darilquervo.dev@gmail.com</a></p>
+      <p class="sub">I typically respond within 1–3 business days.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© <span id="yr"></span> Daril Quervo. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  var params = new URLSearchParams(window.location.search);
+  var appId  = params.get('app') || '';
+
+  fetch('projects.json')
+    .then(function (r) { return r.json(); })
+    .then(function (projects) {
+      var app = projects.find(function (p) { return p.id === appId; });
+      if (!app) return;
+
+      var platform = { android: 'Android', ios: 'iOS', websites: 'Website' }[app.category] || 'App';
+      document.title = 'Support – ' + app.name;
+      document.getElementById('app-label').textContent = platform + ' · ' + app.name;
+
+      if (app.supportContent) {
+        document.getElementById('support-faq').innerHTML = app.supportContent;
+      }
+    })
+    .catch(function () {});
+</script>
+</body>
+</html>
