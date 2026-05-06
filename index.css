@@ -364,7 +364,7 @@ h2 {
 }
 
 .card li {
-  font-size: 0.95rem;
+  font-size: 1.0rem;
   color: var(--text-muted);
   margin-bottom: 0.35rem;
 }
