@@ -129,6 +129,7 @@
       <div class="cv-name">Daril Quervo</div>
       <div class="cv-title">Carpenter &nbsp;·&nbsp; Modular Home Builder</div>
       <div class="cv-meta">
+        <span><strong>Experience:</strong> <span id="cv-exp-count">—</span> in trades</span>
         <span><strong>Email:</strong> darilquervo.dev@gmail.com</span>
         <span><strong>LINE:</strong> line.me/ti/p/YMigpeLlZr</span>
         <span><strong>Location:</strong> Fukuoka, Japan</span>
@@ -222,6 +223,20 @@
     </div>
   </div>
 
+  <!-- EDUCATION -->
+  <div class="sec">
+    <div class="sec-title">Education</div>
+    <div class="xp-item">
+      <div class="xp-when">2nd Year<span class="xp-loc">Philippines</span></div>
+      <div>
+        <div class="xp-role">BS Business Administration — Marketing</div>
+        <p style="font-size:9.8pt;color:var(--muted);margin-top:3px;">
+          International Peace Leadership College &nbsp;·&nbsp; Undergraduate (1st Semester, 2nd Year)
+        </p>
+      </div>
+    </div>
+  </div>
+
   <!-- LANGUAGES -->
   <div class="sec" style="margin-top:4px;">
     <div class="sec-title">Languages</div>
@@ -240,5 +255,17 @@
   </div>
 
 </div>
+<script>
+  (function(){
+    var start = new Date(2024, 5, 26); // June 26, 2024
+    var now   = new Date();
+    var y = now.getFullYear() - start.getFullYear();
+    var m = now.getMonth()    - start.getMonth();
+    if (now.getDate() < start.getDate()) m--;
+    if (m < 0) { y--; m += 12; }
+    var label = (y > 0 ? y + ' yr ' : '') + (m > 0 ? m + ' mo' : (y === 0 ? 'less than 1 mo' : ''));
+    document.getElementById('cv-exp-count').textContent = label;
+  })();
+</script>
 </body>
 </html>

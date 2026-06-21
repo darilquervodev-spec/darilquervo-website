@@ -233,8 +233,7 @@
         <div class="ttl">Daril Quervo</div>
         <ul>
           <li><span class="k">Trade</span><span class="v">Carpenter</span></li>
-          <!-- Set your real number of years below -->
-          <li><span class="k">Experience</span><span class="v">[ X ]+ years</span></li>
+          <li><span class="k">Experience</span><span class="v" id="exp-count">—</span></li>
           <li><span class="k">Focus</span><span class="v">Modular homes</span></li>
           <li><span class="k">Specialty</span><span class="v">Framing &amp; finish</span></li>
           <li><span class="k">Now in</span><span class="v">Fukuoka, Japan</span></li>
@@ -405,6 +404,17 @@
 </footer>
 
 <script>
+  (function(){
+    var start = new Date(2024, 5, 26); // June 26, 2024
+    var now   = new Date();
+    var y = now.getFullYear() - start.getFullYear();
+    var m = now.getMonth()    - start.getMonth();
+    if (now.getDate() < start.getDate()) m--;
+    if (m < 0) { y--; m += 12; }
+    var label = (y > 0 ? y + ' yr ' : '') + (m > 0 ? m + ' mo' : (y === 0 ? '< 1 mo' : ''));
+    document.getElementById('exp-count').textContent = label + '+';
+  })();
+
   document.getElementById('contact-form').addEventListener('submit', function(e){
     e.preventDefault();
     var name = document.getElementById('name').value.trim();
