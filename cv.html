@@ -143,11 +143,13 @@
   <div class="sec">
     <div class="sec-title">Professional Summary</div>
     <p>
-      Experienced carpenter currently based in Fukuoka, Japan, specialising in the construction of
-      <strong>modular homes from foundation to roof</strong>. Skilled in structural framing, general
-      construction, repairs, and small renovations. Committed to safe, accurate, high-quality work
-      delivered on schedule. Holds a Backhoe Operator NC2 certification and is a Registered Master
-      Electrician in the Philippines, bringing cross-trade knowledge to every project.
+      Multi-trade professional with over <span id="cv-summary-exp">13</span> years of hands-on
+      experience spanning carpentry, electrical, and facilities maintenance. Currently working in
+      Fukuoka, Japan as a carpenter for <strong>ICHIJO Homes</strong>, assembling earthquake-resistant
+      modular homes with millimeter-level precision. Previous roles include carpenter at 8Dees
+      Construction (Philippines), store maintenance technician at Leylam, and production maintenance
+      technician at Toyoflex Cebu Corporation. Holds a Backhoe Operator NC2 and is a Registered
+      Master Electrician in the Philippines.
     </p>
   </div>
 
@@ -156,28 +158,53 @@
     <div class="sec-title">Work Experience</div>
 
     <div class="xp-item">
-      <div class="xp-when">Current<span class="xp-loc">Fukuoka, Japan</span></div>
+      <div class="xp-when">Jun 2024 – Now<span class="xp-loc">Japan</span></div>
       <div>
-        <div class="xp-role">Carpenter — Modular Home Builder</div>
+        <div class="xp-role">Carpenter · ICHIJO Homes</div>
         <ul class="xp-bullets">
-          <li>Built and framed modular homes from foundation to roof, covering all structural stages.</li>
-          <li>Carried out framing, construction, repairs, and small renovations to a high standard.</li>
-          <li>Collaborated with team members to meet project deadlines safely and efficiently.</li>
-          <li>Operated and maintained power tools in compliance with on-site safety requirements.</li>
-          <li>Applied knowledge of electrical systems to support multi-trade construction tasks.</li>
+          <li>Expertly assembled pre-engineered structural components, achieving millimeter-level precision to ensure the integrity of Ichijo's earthquake-resistant "Monocoque" structures.</li>
+          <li>Specialized in installing high-performance insulation and vapor barriers, contributing to Ichijo's industry-leading "i-smart" energy efficiency ratings.</li>
+          <li>Proficiently handled specialized Japanese building materials, including high-density insulation panels and engineered wood products.</li>
         </ul>
       </div>
     </div>
 
-    <div class="xp-item" style="margin-top:14px;">
-      <div class="xp-when">Previous<span class="xp-loc">Cebu, Philippines</span></div>
+    <div class="xp-item">
+      <div class="xp-when">Nov 2019 – Jun 2023<span class="xp-loc">Philippines</span></div>
       <div>
-        <div class="xp-role">Registered Master Electrician</div>
+        <div class="xp-role">Carpenter · 8Dees Construction</div>
         <ul class="xp-bullets">
-          <li>Performed electrical installation, maintenance, and troubleshooting for residential and small commercial projects.</li>
-          <li>Designed, installed, and commissioned solar PV systems for residential clients.</li>
-          <li>Ensured all work complied with Philippine Electrical Code (PEC) and safety standards.</li>
-          <li>Liaised directly with clients to scope, quote, and deliver electrical solutions on time.</li>
+          <li>Built and installed structures using wood, metal, and other materials.</li>
+          <li>Executed framing, drywall installation, and finish carpentry with precision.</li>
+          <li>Collaborated with clients to understand project requirements and deliver tailored solutions.</li>
+          <li>Maintained tools and equipment in optimal working condition to ensure safety and efficiency.</li>
+          <li>Adhered to building codes and safety regulations throughout all projects.</li>
+          <li>Trained and supervised junior carpenters in best practices and techniques.</li>
+          <li>Completed projects on time and within budget, consistently meeting client expectations.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="xp-item">
+      <div class="xp-when">Oct 2017 – Sep 2019<span class="xp-loc">Cebu, Philippines</span></div>
+      <div>
+        <div class="xp-role">Store Maintenance Technician · Leylam</div>
+        <ul class="xp-bullets">
+          <li>Installed kiosk power systems, including routing conduits, pulling wires, and precisely terminating electrical power sources to support lighting, POS systems, and commercial appliances while ensuring safety compliance.</li>
+          <li>Built and assembled retail kiosks, handling structural modifications to existing layouts for aesthetic appeal and functional optimization in high-traffic environments.</li>
+          <li>Diagnosed and repaired structural issues, utilizing fine carpentry skills for cabinetry and counters, and maintained durable surfaces within the store environment.</li>
+          <li>Managed essential utility repairs, including the installation and maintenance of sinks, drainage systems, and water lines, and performed masonry work for floor tiling, wall repairs, and reinforced base structures.</li>
+          <li>Conducted high-quality repairs with minimal disruption to business operations, ensuring kiosks remained safe, operational, and compliant with building codes.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="xp-item">
+      <div class="xp-when">Oct 2011 – Oct 2017<span class="xp-loc">Lapu-Lapu, Philippines</span></div>
+      <div>
+        <div class="xp-role">Production Maintenance Technician · Toyoflex Cebu Corp. – Asahi Intecc Group</div>
+        <ul class="xp-bullets">
+          <li>Installed and terminated electrical power for heavy machinery, ensuring compliance with load and safety standards.</li>
         </ul>
       </div>
     </div>
@@ -257,14 +284,23 @@
 </div>
 <script>
   (function(){
-    var start = new Date(2024, 5, 26); // June 26, 2024
-    var now   = new Date();
-    var y = now.getFullYear() - start.getFullYear();
-    var m = now.getMonth()    - start.getMonth();
-    if (now.getDate() < start.getDate()) m--;
+    // Header badge: carpenter role at ICHIJO (Jun 26 2024)
+    var s1 = new Date(2024, 5, 26);
+    var now = new Date();
+    var y = now.getFullYear() - s1.getFullYear();
+    var m = now.getMonth() - s1.getMonth();
+    if (now.getDate() < s1.getDate()) m--;
     if (m < 0) { y--; m += 12; }
-    var label = (y > 0 ? y + ' yr ' : '') + (m > 0 ? m + ' mo' : (y === 0 ? 'less than 1 mo' : ''));
-    document.getElementById('cv-exp-count').textContent = label;
+    document.getElementById('cv-exp-count').textContent =
+      (y > 0 ? y + ' yr ' : '') + (m > 0 ? m + ' mo' : (y === 0 ? '< 1 mo' : ''));
+
+    // Summary: total trades experience from Oct 2011
+    var s2 = new Date(2011, 9, 1);
+    var ty = now.getFullYear() - s2.getFullYear();
+    var tm = now.getMonth() - s2.getMonth();
+    if (now.getDate() < s2.getDate()) tm--;
+    if (tm < 0) { ty--; tm += 12; }
+    document.getElementById('cv-summary-exp').textContent = ty + '+';
   })();
 </script>
 </body>
