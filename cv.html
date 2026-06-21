@@ -106,10 +106,85 @@
     body{font-size:10pt;}
     @page{size:A4;margin:14mm 13mm;}
     a{color:var(--ink-2) !important;}
+    .pin-gate{display:none !important;}
+  }
+
+  /* ── PIN GATE ── */
+  .pin-gate{
+    position:fixed;inset:0;z-index:9999;
+    background:#1E1712;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .pin-box{
+    background:#2F261C;border:1px solid rgba(204,154,87,.25);
+    border-radius:8px;padding:40px 36px;width:100%;max-width:340px;
+    text-align:center;
+  }
+  .pin-box .pin-logo{
+    font-family:'Anton',sans-serif;font-size:1.3rem;letter-spacing:.04em;
+    text-transform:uppercase;color:#EDE4D3;margin-bottom:4px;
+  }
+  .pin-box .pin-logo span{color:#CC9A57;}
+  .pin-box .pin-sub{font-size:.82rem;color:#B3A892;margin-bottom:28px;}
+  .pin-dots{display:flex;justify-content:center;gap:10px;margin-bottom:24px;}
+  .pin-dots span{
+    width:13px;height:13px;border-radius:50%;
+    border:2px solid rgba(204,154,87,.4);
+    background:transparent;transition:background .15s,border-color .15s;
+  }
+  .pin-dots span.filled{background:#CC9A57;border-color:#CC9A57;}
+  .pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .pin-key{
+    background:#1E1712;border:1px solid rgba(204,154,87,.2);border-radius:5px;
+    color:#EDE4D3;font-family:'Work Sans',sans-serif;font-size:1.2rem;font-weight:600;
+    padding:16px 0;cursor:pointer;transition:background .15s,border-color .15s;
+  }
+  .pin-key:hover{background:#271E16;border-color:#CC9A57;}
+  .pin-key:active{background:#CC9A57;color:#241606;}
+  .pin-key.del{font-size:.9rem;letter-spacing:.02em;color:#B3A892;}
+  .pin-error{
+    color:#E07070;font-size:.8rem;font-weight:600;
+    letter-spacing:.06em;text-transform:uppercase;
+    min-height:18px;margin-top:14px;
+  }
+  .pin-gate.shake .pin-box{animation:shake .4s ease;}
+  @keyframes shake{
+    0%,100%{transform:translateX(0);}
+    20%{transform:translateX(-8px);}
+    40%{transform:translateX(8px);}
+    60%{transform:translateX(-6px);}
+    80%{transform:translateX(6px);}
   }
 </style>
 </head>
 <body>
+
+<!-- PIN GATE -->
+<div class="pin-gate" id="pinGate">
+  <div class="pin-box">
+    <div class="pin-logo">DARIL <span>QUERVO</span></div>
+    <div class="pin-sub">Enter PIN to view CV</div>
+    <div class="pin-dots" id="pinDots">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <div class="pin-pad">
+      <button type="button" class="pin-key" onclick="pinPress('1')">1</button>
+      <button type="button" class="pin-key" onclick="pinPress('2')">2</button>
+      <button type="button" class="pin-key" onclick="pinPress('3')">3</button>
+      <button type="button" class="pin-key" onclick="pinPress('4')">4</button>
+      <button type="button" class="pin-key" onclick="pinPress('5')">5</button>
+      <button type="button" class="pin-key" onclick="pinPress('6')">6</button>
+      <button type="button" class="pin-key" onclick="pinPress('7')">7</button>
+      <button type="button" class="pin-key" onclick="pinPress('8')">8</button>
+      <button type="button" class="pin-key" onclick="pinPress('9')">9</button>
+      <button type="button" class="pin-key del" onclick="pinClear()">Clear</button>
+      <button type="button" class="pin-key" onclick="pinPress('0')">0</button>
+      <button type="button" class="pin-key del" onclick="pinBack()">⌫</button>
+    </div>
+    <div class="pin-error" id="pinError"></div>
+  </div>
+</div>
 
 <div class="toolbar">
   <div class="toolbar-left">
@@ -301,6 +376,46 @@
     if (tm < 0) { ty--; tm += 12; }
     document.getElementById('cv-summary-exp').textContent = ty + '+';
   })();
+</script>
+
+<script>
+  var PIN    = '09022014';
+  var entry  = '';
+  var dots   = document.querySelectorAll('#pinDots span');
+  var gate   = document.getElementById('pinGate');
+  var errEl  = document.getElementById('pinError');
+
+  function updateDots() {
+    dots.forEach(function(d, i){ d.classList.toggle('filled', i < entry.length); });
+  }
+
+  function pinPress(digit) {
+    if (entry.length >= PIN.length) return;
+    entry += digit;
+    updateDots();
+    errEl.textContent = '';
+    if (entry.length === PIN.length) {
+      if (entry === PIN) {
+        gate.style.transition = 'opacity .35s';
+        gate.style.opacity = '0';
+        setTimeout(function(){ gate.style.display = 'none'; }, 360);
+      } else {
+        gate.classList.add('shake');
+        setTimeout(function(){ gate.classList.remove('shake'); entry = ''; updateDots(); }, 420);
+        setTimeout(function(){ errEl.textContent = 'Incorrect PIN — try again'; }, 420);
+      }
+    }
+  }
+
+  function pinBack() { entry = entry.slice(0, -1); updateDots(); errEl.textContent = ''; }
+  function pinClear() { entry = ''; updateDots(); errEl.textContent = ''; }
+
+  document.addEventListener('keydown', function(e) {
+    if (gate.style.display === 'none') return;
+    if (e.key >= '0' && e.key <= '9') pinPress(e.key);
+    else if (e.key === 'Backspace') pinBack();
+    else if (e.key === 'Escape') pinClear();
+  });
 </script>
 </body>
 </html>
