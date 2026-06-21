@@ -264,10 +264,9 @@
         <p>Before Japan I worked in the trades in the Philippines, so I'm comfortable on any site and quick to learn local methods and standards. I take pride in tidy, accurate, structural work, and I follow safety procedures closely.</p>
         <p style="font-size:.95rem;color:var(--ink-mut);">Languages: English · Japanese (N4) · Tagalog · Cebuano</p>
       </div>
-      <!-- Replace with a clear, professional photo of you (ideally on-site / in work gear). -->
       <div class="photo">
-        <img src="daril.jpg" alt="Daril Quervo, carpenter" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="ph" style="display:none">[ Add photo: daril.jpg ]</div>
+        <img src="daril.png" alt="Daril Quervo, carpenter" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="ph" style="display:none">[ Add photo: daril.png ]</div>
       </div>
     </div>
   </div>
@@ -357,21 +356,8 @@
       <span class="kicker">On the tools</span>
       <h2>Work gallery</h2>
     </div>
-    <!--
-      ===========================================================
-      ADD REAL JOBSITE PHOTOS HERE — this is the most important
-      part for a trades employer. Show framing, finished homes,
-      you in work gear on site. Replace each .shot div with an
-      <img src="job1.jpg" alt="..."> . 6 strong photos is plenty.
-      ===========================================================
-    -->
-    <div class="gal">
-      <div class="shot">[ Add jobsite photo 1 ]</div>
-      <div class="shot">[ Add jobsite photo 2 ]</div>
-      <div class="shot">[ Add jobsite photo 3 ]</div>
-      <div class="shot">[ Add jobsite photo 4 ]</div>
-      <div class="shot">[ Add jobsite photo 5 ]</div>
-      <div class="shot">[ Add jobsite photo 6 ]</div>
+    <div class="gal" id="gallery">
+      <div class="shot">Loading photos…</div>
     </div>
   </div>
 </section>
@@ -424,6 +410,23 @@
     document.getElementById('form-note').textContent =
       "Thanks! Connect this form to your email handler to receive messages.";
   });
+
+  fetch('gallery.json')
+    .then(function(r){ return r.ok ? r.json() : Promise.reject(); })
+    .then(function(photos){
+      var gal = document.getElementById('gallery');
+      if (!photos.length) { gal.innerHTML = '<div class="shot">No photos yet — add entries to gallery.json</div>'; return; }
+      gal.innerHTML = photos.map(function(p){
+        return '<a class="shot" href="' + p.src + '" target="_blank" rel="noopener" style="padding:0;overflow:hidden;">'
+          + '<img src="' + p.src + '" alt="' + (p.alt || 'Work photo') + '" style="width:100%;height:100%;object-fit:cover;" '
+          + 'onerror="this.parentElement.outerHTML=\'<div class=shot>[ ' + (p.alt || p.src) + ' ]</div>\'">'
+          + '</a>';
+      }).join('');
+    })
+    .catch(function(){
+      document.getElementById('gallery').innerHTML =
+        '<div class="shot">Add a gallery.json file to show photos here</div>';
+    });
 </script>
 
 </body>
