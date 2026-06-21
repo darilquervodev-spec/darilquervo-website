@@ -127,7 +127,7 @@
       onerror="this.outerHTML='<div class=cv-photo-ph>Add photo<br>daril.png</div>'" />
     <div>
       <div class="cv-name">Daril Quervo</div>
-      <div class="cv-title">Carpenter &nbsp;·&nbsp; Modular Home Builder</div>
+      <div class="cv-title">Carpenter &nbsp;·&nbsp; Multi-Trade Professional</div>
       <div class="cv-meta">
         <span><strong>Experience:</strong> <span id="cv-exp-count">—</span> in trades</span>
         <span><strong>Email:</strong> darilquervo.dev@gmail.com</span>
@@ -216,15 +216,15 @@
       <div class="sec-title">Trade Skills</div>
       <div class="skills-grid">
         <div class="skill-item">Modular home construction</div>
-        <div class="skill-item">Structural framing</div>
-        <div class="skill-item">Repairs &amp; renovations</div>
-        <div class="skill-item">Custom shelving &amp; fixtures</div>
-        <div class="skill-item">Power tool operation</div>
-        <div class="skill-item">Backhoe operation</div>
+        <div class="skill-item">Framing &amp; finish carpentry</div>
         <div class="skill-item">Electrical installation</div>
+        <div class="skill-item">Insulation &amp; vapor barriers</div>
+        <div class="skill-item">Repairs &amp; renovations</div>
+        <div class="skill-item">Plumbing &amp; masonry</div>
+        <div class="skill-item">Facilities maintenance</div>
+        <div class="skill-item">Heavy equipment (Backhoe NC2)</div>
         <div class="skill-item">Solar PV systems</div>
         <div class="skill-item">Site safety compliance</div>
-        <div class="skill-item">Team collaboration</div>
       </div>
     </div>
 
@@ -284,15 +284,14 @@
 </div>
 <script>
   (function(){
-    // Header badge: carpenter role at ICHIJO (Jun 26 2024)
-    var s1 = new Date(2024, 5, 26);
+    // Header badge: total trade experience from Oct 2011
+    var s1 = new Date(2011, 9, 1);
     var now = new Date();
     var y = now.getFullYear() - s1.getFullYear();
     var m = now.getMonth() - s1.getMonth();
     if (now.getDate() < s1.getDate()) m--;
     if (m < 0) { y--; m += 12; }
-    document.getElementById('cv-exp-count').textContent =
-      (y > 0 ? y + ' yr ' : '') + (m > 0 ? m + ' mo' : (y === 0 ? '< 1 mo' : ''));
+    document.getElementById('cv-exp-count').textContent = y + ' yr ' + m + ' mo+';
 
     // Summary: total trades experience from Oct 2011
     var s2 = new Date(2011, 9, 1);
