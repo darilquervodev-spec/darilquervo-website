@@ -224,8 +224,7 @@
         <h1 class="rise d2">I build homes<br>from the <span class="t">ground up.</span></h1>
         <p class="lede rise d3">Carpenter with hands-on experience building <strong>modular homes from foundation to roof</strong> — framing, construction, and renovations. Licensed, safety-certified, and committed to <strong>reliable, high-quality work</strong> done right the first time.</p>
         <div class="cta-row rise d4">
-          <!-- Add your CV file as cv.pdf in the same folder, or update this link. -->
-          <a href="cv.pdf" class="btn btn-primary">Download my CV</a>
+          <a href="cv.html" target="_blank" rel="noopener" class="btn btn-primary">Download my CV</a>
           <a href="#contact" class="btn btn-ghost">Contact me</a>
         </div>
       </div>
@@ -406,9 +405,18 @@
 </footer>
 
 <script>
-  document.getElementById('contact-form').addEventListener('submit', function(){
-    document.getElementById('form-note').textContent =
-      "Thanks! Connect this form to your email handler to receive messages.";
+  document.getElementById('contact-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var msg  = document.getElementById('msg').value.trim();
+    var subject = encodeURIComponent('Carpentry Inquiry from ' + name);
+    var body    = encodeURIComponent('From: ' + name + '\nEmail: ' + email + '\n\n' + msg);
+    window.open(
+      'https://mail.google.com/mail/?view=cm&fs=1&to=darilquervo.dev%40gmail.com&su=' + subject + '&body=' + body,
+      '_blank'
+    );
+    document.getElementById('form-note').textContent = 'Gmail opened with your message pre-filled — just hit Send!';
   });
 
   fetch('gallery.json')

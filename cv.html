@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Daril Quervo — Curriculum Vitae</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --gold:#CC9A57;
+    --gold-dark:#9C6E33;
+    --ink:#1A1208;
+    --ink-2:#3D2F1A;
+    --muted:#6B5E4B;
+    --line:#D6C9B4;
+    --bg:#FFFFFF;
+    --bg-2:#F7F2EB;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Work Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:10.5pt;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  a{color:var(--gold-dark);text-decoration:none;}
+
+  /* ── TOOLBAR (hidden when printing) ── */
+  .toolbar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:#1E1712;color:#EDE4D3;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:10px 24px;gap:12px;flex-wrap:wrap;
+    font-family:'Work Sans',sans-serif;font-size:.88rem;
+  }
+  .toolbar-left{display:flex;align-items:center;gap:16px;}
+  .toolbar a{color:#CC9A57;font-weight:600;font-size:.85rem;}
+  .toolbar a:hover{color:#E4B873;}
+  .toolbar-tip{color:#B3A892;font-size:.8rem;}
+  .btn-print{
+    background:var(--gold);color:#241606;border:none;border-radius:3px;
+    padding:9px 20px;font-family:'Work Sans',sans-serif;font-weight:700;
+    font-size:.88rem;cursor:pointer;letter-spacing:.04em;transition:background .2s;
+  }
+  .btn-print:hover{background:#E4B873;}
+
+  /* ── PAGE WRAPPER ── */
+  .page{
+    max-width:794px;margin:76px auto 40px;
+    background:var(--bg);
+    box-shadow:0 2px 24px rgba(0,0,0,.12);
+    padding:40px 44px 44px;
+  }
+
+  /* ── HEADER ── */
+  .cv-header{display:flex;gap:28px;align-items:flex-start;border-bottom:2.5px solid var(--gold);padding-bottom:22px;margin-bottom:22px;}
+  .cv-photo{width:100px;height:120px;border-radius:4px;object-fit:cover;flex-shrink:0;border:1px solid var(--line);}
+  .cv-photo-ph{width:100px;height:120px;border-radius:4px;background:var(--bg-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;text-align:center;font-size:.72rem;color:var(--muted);flex-shrink:0;padding:8px;letter-spacing:.04em;}
+  .cv-name{font-family:'Anton',sans-serif;font-weight:400;font-size:26pt;letter-spacing:.02em;text-transform:uppercase;color:var(--ink);line-height:1;}
+  .cv-title{font-size:10.5pt;color:var(--gold-dark);font-weight:600;margin-top:5px;letter-spacing:.04em;text-transform:uppercase;}
+  .cv-meta{margin-top:10px;display:flex;flex-direction:column;gap:4px;}
+  .cv-meta span{font-size:9.5pt;color:var(--ink-2);}
+  .cv-meta strong{font-weight:600;}
+
+  /* ── SECTION ── */
+  .sec{margin-bottom:20px;}
+  .sec-title{
+    font-family:'Anton',sans-serif;font-weight:400;font-size:10pt;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--gold-dark);
+    border-bottom:1px solid var(--line);padding-bottom:5px;margin-bottom:13px;
+  }
+  .sec p{font-size:10pt;color:var(--ink-2);margin-bottom:8px;}
+
+  /* ── EXPERIENCE ── */
+  .xp-item{display:grid;grid-template-columns:115px 1fr;gap:14px;margin-bottom:16px;}
+  .xp-item:last-child{margin-bottom:0;}
+  .xp-when{font-size:9pt;font-weight:700;color:var(--gold-dark);padding-top:2px;text-transform:uppercase;letter-spacing:.04em;}
+  .xp-loc{display:block;font-weight:500;color:var(--muted);letter-spacing:.02em;text-transform:none;margin-top:2px;}
+  .xp-role{font-weight:700;font-size:10.5pt;color:var(--ink);margin-bottom:5px;}
+  .xp-bullets{list-style:none;display:grid;gap:5px;}
+  .xp-bullets li{position:relative;padding-left:14px;font-size:9.8pt;color:var(--ink-2);}
+  .xp-bullets li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:1.5px;background:var(--gold);}
+
+  /* ── SKILLS GRID ── */
+  .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px 20px;}
+  .skill-item{display:flex;align-items:baseline;gap:7px;font-size:9.8pt;}
+  .skill-item::before{content:"▸";color:var(--gold);font-size:.75em;}
+
+  /* ── CERTS ── */
+  .cert-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+  .cert-box{background:var(--bg-2);border:1px solid var(--line);border-radius:4px;padding:10px 12px;}
+  .cert-box .c-label{font-size:8pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+  .cert-box .c-name{font-weight:700;font-size:10pt;color:var(--ink);margin:4px 0 3px;}
+  .cert-box .c-desc{font-size:8.8pt;color:var(--ink-2);}
+
+  /* ── LANGUAGES ── */
+  .lang-row{display:flex;flex-wrap:wrap;gap:8px 24px;}
+  .lang{display:flex;align-items:baseline;gap:6px;font-size:9.8pt;}
+  .lang .l-name{font-weight:700;color:var(--ink);}
+  .lang .l-level{color:var(--muted);}
+
+  /* ── TWO-COL LAYOUT ── */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+
+  /* ── PRINT STYLES ── */
+  @media print{
+    .toolbar{display:none;}
+    .page{margin:0;box-shadow:none;padding:0;}
+    body{font-size:10pt;}
+    @page{size:A4;margin:14mm 13mm;}
+    a{color:var(--ink-2) !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="toolbar-left">
+    <a href="index.html">← Back to website</a>
+    <span class="toolbar-tip">To save as PDF: click Print → choose "Save as PDF" as the destination</span>
+  </div>
+  <button class="btn-print" onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="cv-header">
+    <img class="cv-photo" src="daril.png" alt="Daril Quervo"
+      onerror="this.outerHTML='<div class=cv-photo-ph>Add photo<br>daril.png</div>'" />
+    <div>
+      <div class="cv-name">Daril Quervo</div>
+      <div class="cv-title">Carpenter &nbsp;·&nbsp; Modular Home Builder</div>
+      <div class="cv-meta">
+        <span><strong>Email:</strong> darilquervo.dev@gmail.com</span>
+        <span><strong>LINE:</strong> line.me/ti/p/YMigpeLlZr</span>
+        <span><strong>Location:</strong> Fukuoka, Japan</span>
+        <span><strong>Nationality:</strong> Filipino &nbsp;|&nbsp; <strong>From:</strong> Cebu, Philippines</span>
+        <span><strong>Languages:</strong> English &nbsp;·&nbsp; Japanese (JLPT N4) &nbsp;·&nbsp; Tagalog &nbsp;·&nbsp; Cebuano</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROFESSIONAL SUMMARY -->
+  <div class="sec">
+    <div class="sec-title">Professional Summary</div>
+    <p>
+      Experienced carpenter currently based in Fukuoka, Japan, specialising in the construction of
+      <strong>modular homes from foundation to roof</strong>. Skilled in structural framing, general
+      construction, repairs, and small renovations. Committed to safe, accurate, high-quality work
+      delivered on schedule. Holds a Backhoe Operator NC2 certification and is a Registered Master
+      Electrician in the Philippines, bringing cross-trade knowledge to every project.
+    </p>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="sec">
+    <div class="sec-title">Work Experience</div>
+
+    <div class="xp-item">
+      <div class="xp-when">Current<span class="xp-loc">Fukuoka, Japan</span></div>
+      <div>
+        <div class="xp-role">Carpenter — Modular Home Builder</div>
+        <ul class="xp-bullets">
+          <li>Built and framed modular homes from foundation to roof, covering all structural stages.</li>
+          <li>Carried out framing, construction, repairs, and small renovations to a high standard.</li>
+          <li>Collaborated with team members to meet project deadlines safely and efficiently.</li>
+          <li>Operated and maintained power tools in compliance with on-site safety requirements.</li>
+          <li>Applied knowledge of electrical systems to support multi-trade construction tasks.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="xp-item" style="margin-top:14px;">
+      <div class="xp-when">Previous<span class="xp-loc">Cebu, Philippines</span></div>
+      <div>
+        <div class="xp-role">Registered Master Electrician</div>
+        <ul class="xp-bullets">
+          <li>Performed electrical installation, maintenance, and troubleshooting for residential and small commercial projects.</li>
+          <li>Designed, installed, and commissioned solar PV systems for residential clients.</li>
+          <li>Ensured all work complied with Philippine Electrical Code (PEC) and safety standards.</li>
+          <li>Liaised directly with clients to scope, quote, and deliver electrical solutions on time.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS + CERTS side by side -->
+  <div class="two-col">
+    <div class="sec">
+      <div class="sec-title">Trade Skills</div>
+      <div class="skills-grid">
+        <div class="skill-item">Modular home construction</div>
+        <div class="skill-item">Structural framing</div>
+        <div class="skill-item">Repairs &amp; renovations</div>
+        <div class="skill-item">Custom shelving &amp; fixtures</div>
+        <div class="skill-item">Power tool operation</div>
+        <div class="skill-item">Backhoe operation</div>
+        <div class="skill-item">Electrical installation</div>
+        <div class="skill-item">Solar PV systems</div>
+        <div class="skill-item">Site safety compliance</div>
+        <div class="skill-item">Team collaboration</div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-title">Certifications &amp; Licences</div>
+      <div style="display:grid;gap:9px;">
+        <div class="cert-box">
+          <div class="c-label">Heavy Equipment</div>
+          <div class="c-name">Backhoe Operator NC2</div>
+          <div class="c-desc">Philippines — heavy equipment certified on site.</div>
+        </div>
+        <div class="cert-box">
+          <div class="c-label">Electrical Trade</div>
+          <div class="c-name">Registered Master Electrician</div>
+          <div class="c-desc">Philippines — licensed for residential &amp; commercial electrical work.</div>
+        </div>
+        <div class="cert-box">
+          <div class="c-label">Site Safety</div>
+          <div class="c-name">Power Tool Safety</div>
+          <div class="c-desc">Certified safe handling of power tools on construction sites.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LANGUAGES -->
+  <div class="sec" style="margin-top:4px;">
+    <div class="sec-title">Languages</div>
+    <div class="lang-row">
+      <div class="lang"><span class="l-name">English</span><span class="l-level">— Professional working proficiency</span></div>
+      <div class="lang"><span class="l-name">Japanese</span><span class="l-level">— Conversational (JLPT N4)</span></div>
+      <div class="lang"><span class="l-name">Tagalog</span><span class="l-level">— Native</span></div>
+      <div class="lang"><span class="l-name">Cebuano</span><span class="l-level">— Native</span></div>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="sec">
+    <div class="sec-title">References</div>
+    <p style="color:var(--muted);font-size:9.5pt;">Available on request.</p>
+  </div>
+
+</div>
+</body>
+</html>
