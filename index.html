@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Daril Quervo — Carpenter · Modular Home Builder</title>
+<meta name="description" content="Daril Quervo — experienced carpenter and modular home builder. Foundation to roof: framing, construction, and renovations. Licensed and safety-certified." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bark:#1E1712;
+    --bark-2:#271E16;
+    --panel:#2F261C;
+    --timber:#CC9A57;
+    --timber-bright:#E4B873;
+    --timber-deep:#9C6E33;
+    --bone:#EDE4D3;
+    --bone-2:#F6EFE2;
+    --txt:#EFE7D7;
+    --txt-mut:#B3A892;
+    --ink:#241C13;
+    --ink-mut:#6B5E4B;
+    --line:rgba(237,228,211,.13);
+    --line-dark:rgba(36,28,19,.16);
+    --green:#7FB069;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Work Sans',system-ui,sans-serif;background:var(--bark);color:var(--txt);line-height:1.62;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 28px;}
+
+  /* grade-stamp label (signature device) */
+  .stamp{
+    display:inline-flex;align-items:center;gap:9px;
+    border:1.5px solid var(--timber);border-radius:3px;
+    padding:6px 12px;font-weight:700;font-size:.7rem;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--timber);
+  }
+  .stamp::before{content:"";width:7px;height:7px;background:var(--timber);border-radius:1px;}
+
+  .kicker{font-weight:700;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--timber);}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:50;background:rgba(30,23,18,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .brand{font-family:'Anton',sans-serif;font-size:1.4rem;letter-spacing:.02em;text-transform:uppercase;}
+  .brand span{color:var(--timber);}
+  .navlinks{display:flex;gap:28px;align-items:center;}
+  .navlinks a{font-size:.88rem;color:var(--txt-mut);font-weight:500;transition:color .2s;}
+  .navlinks a:hover{color:var(--txt);}
+  .navlinks .btn-sm{background:var(--timber);color:#241606;padding:9px 18px;border-radius:3px;font-weight:700;font-size:.82rem;letter-spacing:.04em;}
+  .navlinks .btn-sm:hover{background:var(--timber-bright);}
+  @media(max-width:760px){.navlinks a:not(.btn-sm){display:none;}}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;padding:92px 0 70px;
+    background:
+      linear-gradient(180deg,rgba(30,23,18,.55),var(--bark) 88%),
+      repeating-linear-gradient(92deg,rgba(204,154,87,.05) 0 2px,transparent 2px 7px),
+      repeating-linear-gradient(88deg,rgba(0,0,0,.18) 0 1px,transparent 1px 16px),
+      var(--bark);}
+  .hero-grid{display:grid;grid-template-columns:1.3fr .85fr;gap:54px;align-items:center;}
+  @media(max-width:880px){.hero-grid{grid-template-columns:1fr;gap:38px;}}
+  .hero h1{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(3rem,8vw,5.6rem);line-height:.92;letter-spacing:.005em;text-transform:uppercase;margin:20px 0 0;}
+  .hero h1 .t{color:var(--timber);}
+  .hero .lede{font-size:1.12rem;color:var(--txt-mut);max-width:40ch;margin-top:22px;}
+  .hero .lede strong{color:var(--txt);font-weight:600;}
+  .cta-row{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px;}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:3px;font-weight:700;font-size:.92rem;letter-spacing:.03em;transition:transform .15s,background .2s,border-color .2s;}
+  .btn-primary{background:var(--timber);color:#241606;}
+  .btn-primary:hover{background:var(--timber-bright);transform:translateY(-2px);}
+  .btn-ghost{border:1.5px solid var(--line);color:var(--txt);}
+  .btn-ghost:hover{border-color:var(--timber);transform:translateY(-2px);}
+
+  .idcard{background:var(--bark-2);border:1px solid var(--line);border-radius:5px;padding:22px 22px 18px;position:relative;}
+  .idcard::before,.idcard::after{content:"";position:absolute;width:14px;height:14px;border:2px solid var(--timber);}
+  .idcard::before{top:9px;left:9px;border-right:none;border-bottom:none;}
+  .idcard::after{bottom:9px;right:9px;border-left:none;border-top:none;}
+  .idcard .ttl{font-family:'Anton',sans-serif;font-size:1.15rem;letter-spacing:.03em;text-transform:uppercase;color:var(--timber);border-bottom:1px solid var(--line);padding-bottom:13px;margin-bottom:13px;display:flex;justify-content:space-between;align-items:center;}
+  .idcard .dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(127,176,105,.2);}
+  .idcard ul{list-style:none;display:grid;gap:11px;}
+  .idcard li{display:flex;justify-content:space-between;gap:12px;font-size:.86rem;}
+  .idcard li .k{color:var(--txt-mut);font-weight:500;}
+  .idcard li .v{color:var(--txt);font-weight:600;text-align:right;}
+
+  .proof{border-top:1px solid var(--line);margin-top:56px;padding-top:24px;display:flex;flex-wrap:wrap;gap:13px 30px;}
+  .proof .i{display:flex;align-items:center;gap:9px;font-size:.82rem;font-weight:600;letter-spacing:.03em;color:var(--txt-mut);}
+  .proof .i b{color:var(--txt);}
+  .proof .c{color:var(--timber);font-weight:800;}
+
+  /* sections */
+  section{padding:84px 0;}
+  .light{background:var(--bone);color:var(--ink);}
+  .light .kicker{color:var(--timber-deep);}
+  .light .stamp{border-color:var(--timber-deep);color:var(--timber-deep);}
+  .light .stamp::before{background:var(--timber-deep);}
+  .sec-head{margin-bottom:42px;}
+  .sec-head h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(2rem,4.4vw,3rem);line-height:1;letter-spacing:.01em;text-transform:uppercase;margin-top:14px;}
+
+  .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:start;}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:30px;}}
+  .about-grid p{font-size:1.06rem;color:#473A2A;margin-bottom:16px;}
+  .about-grid p strong{color:var(--ink);}
+  .photo{border:1px solid var(--line-dark);border-radius:6px;overflow:hidden;background:var(--bone-2);aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;}
+  .photo img{width:100%;height:100%;object-fit:cover;}
+  .photo .ph{font-weight:700;font-size:.8rem;color:var(--ink-mut);text-align:center;padding:24px;letter-spacing:.08em;text-transform:uppercase;}
+
+  /* skills */
+  .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  @media(max-width:680px){.skills-grid{grid-template-columns:1fr;}}
+  .skill{display:flex;gap:14px;align-items:flex-start;background:var(--bark-2);border:1px solid var(--line);border-radius:5px;padding:18px 20px;transition:border-color .2s,transform .2s;}
+  .skill:hover{border-color:var(--timber);transform:translateY(-2px);}
+  .skill .mk{font-family:'Anton',sans-serif;color:var(--timber);font-size:1.1rem;line-height:1.4;min-width:30px;}
+  .skill h3{font-weight:700;font-size:1.02rem;margin-bottom:3px;}
+  .skill p{font-size:.9rem;color:var(--txt-mut);}
+
+  /* certifications */
+  .cert-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line-dark);border-radius:6px;overflow:hidden;background:var(--bone-2);}
+  @media(max-width:760px){.cert-grid{grid-template-columns:1fr;}}
+  .cert{padding:28px 24px;border-right:1px solid var(--line-dark);}
+  .cert:last-child{border-right:none;}
+  @media(max-width:760px){.cert{border-right:none;border-bottom:1px solid var(--line-dark);}.cert:last-child{border-bottom:none;}}
+  .cert .k{font-weight:700;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--timber-deep);}
+  .cert h4{font-family:'Anton',sans-serif;font-weight:400;font-size:1.3rem;letter-spacing:.01em;text-transform:uppercase;margin:11px 0 7px;color:var(--ink);}
+  .cert p{font-size:.92rem;color:#57492F;}
+
+  /* experience timeline */
+  .xp{display:grid;gap:0;}
+  .xp-item{display:grid;grid-template-columns:200px 1fr;gap:30px;padding:26px 0;border-top:1px solid var(--line);}
+  .xp-item:first-child{border-top:none;}
+  @media(max-width:680px){.xp-item{grid-template-columns:1fr;gap:8px;}}
+  .xp-when{font-weight:700;font-size:.82rem;letter-spacing:.04em;color:var(--timber);text-transform:uppercase;}
+  .xp-when .loc{display:block;color:var(--txt-mut);font-weight:500;letter-spacing:.02em;margin-top:3px;text-transform:none;}
+  .xp-body h3{font-family:'Anton',sans-serif;font-weight:400;font-size:1.35rem;letter-spacing:.01em;text-transform:uppercase;margin-bottom:8px;}
+  .xp-body ul{list-style:none;display:grid;gap:7px;}
+  .xp-body li{position:relative;padding-left:20px;color:var(--txt-mut);font-size:.96rem;}
+  .xp-body li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:2px;background:var(--timber);}
+
+  /* gallery */
+  .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media(max-width:760px){.gal{grid-template-columns:1fr 1fr;}}
+  @media(max-width:480px){.gal{grid-template-columns:1fr;}}
+  .shot{aspect-ratio:4/3;border:1px solid var(--line);border-radius:5px;overflow:hidden;
+    background:repeating-linear-gradient(135deg,rgba(204,154,87,.07) 0 14px,transparent 14px 28px),var(--bark-2);
+    display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;
+    font-weight:700;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--txt-mut);transition:border-color .2s;}
+  .shot:hover{border-color:var(--timber);}
+
+  /* availability */
+  .avail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media(max-width:760px){.avail-grid{grid-template-columns:1fr;}}
+  .ab{background:var(--bone-2);border:1px solid var(--line-dark);border-radius:6px;padding:24px;}
+  .ab .k{font-weight:700;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--timber-deep);margin-bottom:9px;}
+  .ab p{color:#473A2A;font-size:.98rem;}
+  .ab .big{font-family:'Anton',sans-serif;font-size:1.4rem;text-transform:uppercase;color:var(--ink);letter-spacing:.01em;}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+  @media(max-width:760px){.contact-grid{grid-template-columns:1fr;gap:30px;}}
+  .channels{display:grid;gap:16px;}
+  .channel{display:flex;flex-direction:column;gap:3px;padding:17px 19px;border:1px solid var(--line);border-radius:4px;transition:border-color .2s;}
+  .channel:hover{border-color:var(--timber);}
+  .channel .k{font-weight:700;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--txt-mut);}
+  .channel .v{font-size:1rem;color:var(--txt);font-weight:600;}
+  form{display:grid;gap:13px;}
+  label{font-weight:700;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--txt-mut);}
+  input,textarea{width:100%;background:var(--bark-2);border:1px solid var(--line);border-radius:3px;padding:13px 15px;color:var(--txt);font-family:'Work Sans',sans-serif;font-size:.96rem;}
+  input:focus,textarea:focus{outline:none;border-color:var(--timber);}
+  textarea{min-height:115px;resize:vertical;}
+  .field{display:grid;gap:6px;}
+  button.submit{background:var(--timber);color:#241606;border:none;border-radius:3px;padding:14px;font-family:'Anton',sans-serif;font-size:1rem;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .15s;}
+  button.submit:hover{background:var(--timber-bright);transform:translateY(-2px);}
+  .form-note{font-size:.82rem;color:var(--txt-mut);}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  footer .fb{font-family:'Anton',sans-serif;font-size:1.2rem;text-transform:uppercase;}
+  footer .fb span{color:var(--timber);}
+  footer small{color:var(--txt-mut);font-size:.8rem;letter-spacing:.04em;}
+
+  @keyframes rise{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+  .rise{animation:rise .7s cubic-bezier(.2,.7,.2,1) both;}
+  .d1{animation-delay:.05s;}.d2{animation-delay:.15s;}.d3{animation-delay:.25s;}.d4{animation-delay:.35s;}
+  :focus-visible{outline:2px solid var(--timber-bright);outline-offset:3px;}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto;}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Daril Quervo",
+  "jobTitle": "Carpenter",
+  "url": "https://darilquervo.com/",
+  "description": "Experienced carpenter and modular home builder — framing, construction, and renovations, foundation to roof. Licensed and safety-certified.",
+  "knowsAbout": ["Carpentry", "Modular home construction", "Timber framing", "Building construction", "Renovations", "Power tool safety"],
+  "address": { "@type": "PostalAddress", "addressLocality": "Fukuoka", "addressCountry": "JP" },
+  "nationality": "Filipino"
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">DARIL <span>QUERVO</span></div>
+    <div class="navlinks">
+      <a href="#about">Profile</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact" class="btn-sm">Contact me</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="stamp rise d1">Carpenter · Modular Home Builder</span>
+        <h1 class="rise d2">I build homes<br>from the <span class="t">ground up.</span></h1>
+        <p class="lede rise d3">Carpenter with hands-on experience building <strong>modular homes from foundation to roof</strong> — framing, construction, and renovations. Licensed, safety-certified, and committed to <strong>reliable, high-quality work</strong> done right the first time.</p>
+        <div class="cta-row rise d4">
+          <!-- Add your CV file as cv.pdf in the same folder, or update this link. -->
+          <a href="cv.pdf" class="btn btn-primary">Download my CV</a>
+          <a href="#contact" class="btn btn-ghost">Contact me</a>
+        </div>
+      </div>
+
+      <aside class="idcard rise d3" aria-label="Profile summary">
+        <div class="ttl">Daril Quervo</div>
+        <ul>
+          <li><span class="k">Trade</span><span class="v">Carpenter</span></li>
+          <!-- Set your real number of years below -->
+          <li><span class="k">Experience</span><span class="v">[ X ]+ years</span></li>
+          <li><span class="k">Focus</span><span class="v">Modular homes</span></li>
+          <li><span class="k">Specialty</span><span class="v">Framing &amp; finish</span></li>
+          <li><span class="k">Now in</span><span class="v">Fukuoka, Japan</span></li>
+          <li><span class="k">From</span><span class="v">Cebu, Philippines</span></li>
+        </ul>
+      </aside>
+    </div>
+
+    <div class="proof">
+      <span class="i"><span class="c">✓</span> <b>Modular homes</b> · foundation to roof</span>
+      <span class="i"><span class="c">✓</span> <b>Framing</b> &amp; construction</span>
+      <span class="i"><span class="c">✓</span> <b>Safety-certified</b> power tools</span>
+      <span class="i"><span class="c">✓</span> Backhoe Operator <b>NC2</b></span>
+    </div>
+  </div>
+</header>
+
+<!-- PROFILE -->
+<section id="about" class="light">
+  <div class="wrap">
+    <span class="kicker">Profile</span>
+    <div class="about-grid" style="margin-top:26px;">
+      <div>
+        <h2 style="font-family:'Anton';font-weight:400;font-size:clamp(2rem,4.4vw,3rem);line-height:1;text-transform:uppercase;letter-spacing:.01em;color:var(--ink);margin-bottom:22px;">Reliable hands, built for the job.</h2>
+        <p>I'm a <strong>carpenter</strong> currently working in Japan, where I've built and framed <strong>modular homes from the foundation right through to the roof</strong>. My day-to-day covers framing, construction, repairs, and small renovations — delivered safely, on time, and to a high standard alongside my team.</p>
+        <p>Before Japan I worked in the trades in the Philippines, so I'm comfortable on any site and quick to learn local methods and standards. I take pride in tidy, accurate, structural work, and I follow safety procedures closely.</p>
+        <p style="font-size:.95rem;color:var(--ink-mut);">Languages: English · Japanese (N4) · Tagalog · Cebuano</p>
+      </div>
+      <!-- Replace with a clear, professional photo of you (ideally on-site / in work gear). -->
+      <div class="photo">
+        <img src="daril.jpg" alt="Daril Quervo, carpenter" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="ph" style="display:none">[ Add photo: daril.jpg ]</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">What I do on site</span>
+      <h2>Carpentry skills</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill"><span class="mk">/</span><div><h3>Modular home building</h3><p>Building modular houses from foundation to roof.</p></div></div>
+      <div class="skill"><span class="mk">/</span><div><h3>Framing &amp; construction</h3><p>Structural framing and general construction work.</p></div></div>
+      <div class="skill"><span class="mk">/</span><div><h3>Repairs &amp; renovations</h3><p>Repairs and small renovations to a clean finish.</p></div></div>
+      <div class="skill"><span class="mk">/</span><div><h3>Custom shelves &amp; fixtures</h3><p>Building custom shelving and fixtures to spec.</p></div></div>
+      <div class="skill"><span class="mk">/</span><div><h3>Safe power-tool use</h3><p>Certified, safe handling of power tools on site.</p></div></div>
+      <div class="skill"><span class="mk">/</span><div><h3>Backhoe operation</h3><p>Backhoe Operator NC2 holder (Philippines).</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="light" style="padding-top:66px;padding-bottom:66px;">
+  <div class="wrap">
+    <span class="kicker" style="display:block;margin-bottom:24px;">Tickets &amp; licenses</span>
+    <div class="cert-grid">
+      <div class="cert">
+        <div class="k">Heavy equipment</div>
+        <h4>Backhoe NC2</h4>
+        <p>Certified Backhoe Operator (NC2), Philippines — comfortable around heavy equipment on site.</p>
+      </div>
+      <div class="cert">
+        <div class="k">Electrical trade</div>
+        <h4>Master Electrician</h4>
+        <p>Registered Master Electrician (Philippines) — added value for construction sites needing electrical know-how.</p>
+      </div>
+      <div class="cert">
+        <div class="k">Site safety</div>
+        <h4>Tool Safety</h4>
+        <p>Certified safe handling of power tools; ready to complete any local site-safety tickets (e.g. White Card) on arrival.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Work history</span>
+      <h2>Experience</h2>
+    </div>
+    <div class="xp">
+      <div class="xp-item">
+        <div class="xp-when">Current<span class="loc">Japan</span></div>
+        <div class="xp-body">
+          <h3>Carpenter</h3>
+          <ul>
+            <li>Built and framed modular homes from foundation to roof.</li>
+            <li>Handled framing, repairs, and small renovations.</li>
+            <li>Worked with the team to deliver safe, high-quality work on schedule.</li>
+            <li>Certified safe handling of power tools.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="xp-item">
+        <div class="xp-when">Past<span class="loc">Philippines</span></div>
+        <div class="xp-body">
+          <h3>Electrician</h3>
+          <ul>
+            <li>Electrical installation, maintenance, and troubleshooting for residential and small commercial projects.</li>
+            <li>Solar system setup and troubleshooting.</li>
+            <li>Worked with clients and teams to deliver safe, reliable work.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="light" style="padding-top:66px;padding-bottom:66px;">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">On the tools</span>
+      <h2>Work gallery</h2>
+    </div>
+    <!--
+      ===========================================================
+      ADD REAL JOBSITE PHOTOS HERE — this is the most important
+      part for a trades employer. Show framing, finished homes,
+      you in work gear on site. Replace each .shot div with an
+      <img src="job1.jpg" alt="..."> . 6 strong photos is plenty.
+      ===========================================================
+    -->
+    <div class="gal">
+      <div class="shot">[ Add jobsite photo 1 ]</div>
+      <div class="shot">[ Add jobsite photo 2 ]</div>
+      <div class="shot">[ Add jobsite photo 3 ]</div>
+      <div class="shot">[ Add jobsite photo 4 ]</div>
+      <div class="shot">[ Add jobsite photo 5 ]</div>
+      <div class="shot">[ Add jobsite photo 6 ]</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="light">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Get in touch</span>
+      <h2 style="color:var(--ink)">Contact me</h2>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <p style="color:#473A2A;font-size:1.05rem;margin-bottom:22px;max-width:42ch;">Hiring for a carpentry or construction role? Get in touch and I'll send my full CV and references. I reply within 1–2 days.</p>
+        <div class="channels">
+          <!-- TIP: a "carpenter" email (no ".dev") reads better for trade jobs. -->
+          <a class="channel" href="mailto:darilquervo.dev@gmail.com" style="border-color:var(--line-dark)">
+            <span class="k" style="color:var(--ink-mut)">Email</span><span class="v" style="color:var(--ink)">darilquervo.dev@gmail.com</span>
+          </a>
+          <a class="channel" href="https://line.me/ti/p/YMigpeLlZr" target="_blank" rel="noopener" style="border-color:var(--line-dark)">
+            <span class="k" style="color:var(--ink-mut)">LINE</span><span class="v" style="color:var(--ink)">Message me on LINE</span>
+          </a>
+          <div class="channel" style="border-color:var(--line-dark)">
+            <span class="k" style="color:var(--ink-mut)">Based in</span><span class="v" style="color:var(--ink)">Fukuoka, Japan</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wire this form to your email handler / a form service. -->
+      <form id="contact-form" onsubmit="return false;">
+        <div class="field"><label for="name" style="color:var(--ink-mut)">Your name / company</label><input id="name" name="name" type="text" style="background:var(--bone-2);border-color:var(--line-dark);color:var(--ink)" required /></div>
+        <div class="field"><label for="email" style="color:var(--ink-mut)">Email</label><input id="email" name="email" type="email" style="background:var(--bone-2);border-color:var(--line-dark);color:var(--ink)" required /></div>
+        <div class="field"><label for="msg" style="color:var(--ink-mut)">Message</label><textarea id="msg" name="message" placeholder="Tell me about the role and location." style="background:var(--bone-2);border-color:var(--line-dark);color:var(--ink)" required></textarea></div>
+        <button class="submit" type="submit">Send message</button>
+        <p class="form-note" id="form-note" style="color:var(--ink-mut)">Your message goes directly to my inbox. I'll reply within 1–2 days.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="fb">DARIL <span>QUERVO</span></span>
+    <small>© Daril Quervo — Carpenter · Modular Home Builder</small>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('contact-form').addEventListener('submit', function(){
+    document.getElementById('form-note').textContent =
+      "Thanks! Connect this form to your email handler to receive messages.";
+  });
+</script>
+
+</body>
+</html>
