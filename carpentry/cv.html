@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Daril Quervo — Curriculum Vitae</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --gold:#CC9A57;
+    --gold-dark:#9C6E33;
+    --ink:#1A1208;
+    --ink-2:#3D2F1A;
+    --muted:#6B5E4B;
+    --line:#D6C9B4;
+    --bg:#FFFFFF;
+    --bg-2:#F7F2EB;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Work Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:10.5pt;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  a{color:var(--gold-dark);text-decoration:none;}
+
+  /* ── TOOLBAR (hidden when printing) ── */
+  .toolbar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:#1E1712;color:#EDE4D3;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:10px 24px;gap:12px;flex-wrap:wrap;
+    font-family:'Work Sans',sans-serif;font-size:.88rem;
+  }
+  .toolbar-left{display:flex;align-items:center;gap:16px;}
+  .toolbar a{color:#CC9A57;font-weight:600;font-size:.85rem;}
+  .toolbar a:hover{color:#E4B873;}
+  .toolbar-tip{color:#B3A892;font-size:.8rem;}
+  .btn-print{
+    background:var(--gold);color:#241606;border:none;border-radius:3px;
+    padding:9px 20px;font-family:'Work Sans',sans-serif;font-weight:700;
+    font-size:.88rem;cursor:pointer;letter-spacing:.04em;transition:background .2s;
+  }
+  .btn-print:hover{background:#E4B873;}
+
+  /* ── PAGE WRAPPER ── */
+  .page{
+    max-width:794px;margin:76px auto 40px;
+    background:var(--bg);
+    box-shadow:0 2px 24px rgba(0,0,0,.12);
+    padding:40px 44px 44px;
+  }
+
+  /* ── HEADER ── */
+  .cv-header{display:flex;gap:28px;align-items:flex-start;border-bottom:2.5px solid var(--gold);padding-bottom:22px;margin-bottom:22px;}
+  .cv-photo{width:100px;height:120px;border-radius:4px;object-fit:cover;flex-shrink:0;border:1px solid var(--line);}
+  .cv-photo-ph{width:100px;height:120px;border-radius:4px;background:var(--bg-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;text-align:center;font-size:.72rem;color:var(--muted);flex-shrink:0;padding:8px;letter-spacing:.04em;}
+  .cv-name{font-family:'Anton',sans-serif;font-weight:400;font-size:26pt;letter-spacing:.02em;text-transform:uppercase;color:var(--ink);line-height:1;}
+  .cv-title{font-size:10.5pt;color:var(--gold-dark);font-weight:600;margin-top:5px;letter-spacing:.04em;text-transform:uppercase;}
+  .cv-meta{margin-top:10px;display:flex;flex-direction:column;gap:4px;}
+  .cv-meta span{font-size:9.5pt;color:var(--ink-2);}
+  .cv-meta strong{font-weight:600;}
+
+  /* ── SECTION ── */
+  .sec{margin-bottom:20px;}
+  .sec-title{
+    font-family:'Anton',sans-serif;font-weight:400;font-size:10pt;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--gold-dark);
+    border-bottom:1px solid var(--line);padding-bottom:5px;margin-bottom:13px;
+  }
+  .sec p{font-size:10pt;color:var(--ink-2);margin-bottom:8px;}
+
+  /* ── EXPERIENCE ── */
+  .xp-item{display:grid;grid-template-columns:115px 1fr;gap:14px;margin-bottom:16px;}
+  .xp-item:last-child{margin-bottom:0;}
+  .xp-when{font-size:9pt;font-weight:700;color:var(--gold-dark);padding-top:2px;text-transform:uppercase;letter-spacing:.04em;}
+  .xp-loc{display:block;font-weight:500;color:var(--muted);letter-spacing:.02em;text-transform:none;margin-top:2px;}
+  .xp-role{font-weight:700;font-size:10.5pt;color:var(--ink);margin-bottom:5px;}
+  .xp-bullets{list-style:none;display:grid;gap:5px;}
+  .xp-bullets li{position:relative;padding-left:14px;font-size:9.8pt;color:var(--ink-2);}
+  .xp-bullets li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:1.5px;background:var(--gold);}
+
+  /* ── SKILLS GRID ── */
+  .skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px 20px;}
+  .skill-item{display:flex;align-items:baseline;gap:7px;font-size:9.8pt;}
+  .skill-item::before{content:"▸";color:var(--gold);font-size:.75em;}
+
+  /* ── CERTS ── */
+  .cert-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+  .cert-box{background:var(--bg-2);border:1px solid var(--line);border-radius:4px;padding:10px 12px;}
+  .cert-box .c-label{font-size:8pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+  .cert-box .c-name{font-weight:700;font-size:10pt;color:var(--ink);margin:4px 0 3px;}
+  .cert-box .c-desc{font-size:8.8pt;color:var(--ink-2);}
+
+  /* ── LANGUAGES ── */
+  .lang-row{display:flex;flex-wrap:wrap;gap:8px 24px;}
+  .lang{display:flex;align-items:baseline;gap:6px;font-size:9.8pt;}
+  .lang .l-name{font-weight:700;color:var(--ink);}
+  .lang .l-level{color:var(--muted);}
+
+  /* ── TWO-COL LAYOUT ── */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+
+  /* ── PRINT STYLES ── */
+  @media print{
+    .toolbar{display:none;}
+    .page{margin:0;box-shadow:none;padding:0;}
+    body{font-size:10pt;}
+    @page{size:A4;margin:14mm 13mm;}
+    a{color:var(--ink-2) !important;}
+    .pin-gate{display:none !important;}
+  }
+
+  /* ── PIN GATE ── */
+  .pin-gate{
+    position:fixed;inset:0;z-index:9999;
+    background:#1E1712;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .pin-box{
+    background:#2F261C;border:1px solid rgba(204,154,87,.25);
+    border-radius:8px;padding:40px 36px;width:100%;max-width:340px;
+    text-align:center;
+  }
+  .pin-box .pin-logo{
+    font-family:'Anton',sans-serif;font-size:1.3rem;letter-spacing:.04em;
+    text-transform:uppercase;color:#EDE4D3;margin-bottom:4px;
+  }
+  .pin-box .pin-logo span{color:#CC9A57;}
+  .pin-box .pin-sub{font-size:.82rem;color:#B3A892;margin-bottom:28px;}
+  .pin-dots{display:flex;justify-content:center;gap:10px;margin-bottom:24px;}
+  .pin-dots span{
+    width:13px;height:13px;border-radius:50%;
+    border:2px solid rgba(204,154,87,.4);
+    background:transparent;transition:background .15s,border-color .15s;
+  }
+  .pin-dots span.filled{background:#CC9A57;border-color:#CC9A57;}
+  .pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .pin-key{
+    background:#1E1712;border:1px solid rgba(204,154,87,.2);border-radius:5px;
+    color:#EDE4D3;font-family:'Work Sans',sans-serif;font-size:1.2rem;font-weight:600;
+    padding:16px 0;cursor:pointer;transition:background .15s,border-color .15s;
+  }
+  .pin-key:hover{background:#271E16;border-color:#CC9A57;}
+  .pin-key:active{background:#CC9A57;color:#241606;}
+  .pin-key.del{font-size:.9rem;letter-spacing:.02em;color:#B3A892;}
+  .pin-error{
+    color:#E07070;font-size:.8rem;font-weight:600;
+    letter-spacing:.06em;text-transform:uppercase;
+    min-height:18px;margin-top:14px;
+  }
+  .pin-gate.shake .pin-box{animation:shake .4s ease;}
+  @keyframes shake{
+    0%,100%{transform:translateX(0);}
+    20%{transform:translateX(-8px);}
+    40%{transform:translateX(8px);}
+    60%{transform:translateX(-6px);}
+    80%{transform:translateX(6px);}
+  }
+</style>
+</head>
+<body>
+
+<!-- PIN GATE -->
+<div class="pin-gate" id="pinGate">
+  <div class="pin-box">
+    <div class="pin-logo">DARIL <span>QUERVO</span></div>
+    <div class="pin-sub">Enter PIN to view CV</div>
+    <div class="pin-dots" id="pinDots">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <div class="pin-pad">
+      <button type="button" class="pin-key" onclick="pinPress('1')">1</button>
+      <button type="button" class="pin-key" onclick="pinPress('2')">2</button>
+      <button type="button" class="pin-key" onclick="pinPress('3')">3</button>
+      <button type="button" class="pin-key" onclick="pinPress('4')">4</button>
+      <button type="button" class="pin-key" onclick="pinPress('5')">5</button>
+      <button type="button" class="pin-key" onclick="pinPress('6')">6</button>
+      <button type="button" class="pin-key" onclick="pinPress('7')">7</button>
+      <button type="button" class="pin-key" onclick="pinPress('8')">8</button>
+      <button type="button" class="pin-key" onclick="pinPress('9')">9</button>
+      <button type="button" class="pin-key del" onclick="pinClear()">Clear</button>
+      <button type="button" class="pin-key" onclick="pinPress('0')">0</button>
+      <button type="button" class="pin-key del" onclick="pinBack()">⌫</button>
+    </div>
+    <div class="pin-error" id="pinError"></div>
+  </div>
+</div>
+
+<div class="toolbar">
+  <div class="toolbar-left">
+    <a href="index.html">← Back to website</a>
+    <span class="toolbar-tip">To save as PDF: click Print → choose "Save as PDF" as the destination</span>
+  </div>
+  <button class="btn-print" onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="cv-header">
+    <img class="cv-photo" src="daril.png" alt="Daril Quervo"
+      onerror="this.outerHTML='<div class=cv-photo-ph>Add photo<br>daril.png</div>'" />
+    <div>
+      <div class="cv-name">Daril Quervo</div>
+      <div class="cv-title">Carpenter &nbsp;·&nbsp; Multi-Trade Professional</div>
+      <div class="cv-meta">
+        <span><strong>Experience:</strong> <span id="cv-exp-count">—</span> in trades</span>
+        <span><strong>Email:</strong> darilquervo.dev@gmail.com</span>
+        <span><strong>LINE:</strong> line.me/ti/p/YMigpeLlZr</span>
+        <span><strong>Location:</strong> Fukuoka, Japan</span>
+        <span><strong>Nationality:</strong> Filipino &nbsp;|&nbsp; <strong>From:</strong> Cebu, Philippines</span>
+        <span><strong>Languages:</strong> English &nbsp;·&nbsp; Japanese (JLPT N4) &nbsp;·&nbsp; Tagalog &nbsp;·&nbsp; Cebuano</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROFESSIONAL SUMMARY -->
+  <div class="sec">
+    <div class="sec-title">Professional Summary</div>
+    <p>
+      Multi-trade professional with over <span id="cv-summary-exp">13</span> years of hands-on
+      experience spanning carpentry, electrical, and facilities maintenance. Currently working in
+      Fukuoka, Japan as a carpenter for <strong>ICHIJO Homes</strong>, assembling earthquake-resistant
+      modular homes with millimeter-level precision. Previous roles include carpenter at 8Dees
+      Construction (Philippines), store maintenance technician at Leylam, and production maintenance
+      technician at Toyoflex Cebu Corporation. Holds a Backhoe Operator NC2 and is a Registered
+      Master Electrician in the Philippines.
+    </p>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="sec">
+    <div class="sec-title">Work Experience</div>
+
+    <div class="xp-item">
+      <div class="xp-when">Jun 2024 – Now<span class="xp-loc">Japan</span></div>
+      <div>
+        <div class="xp-role">Carpenter · ICHIJO Homes</div>
+        <ul class="xp-bullets">
+          <li>Expertly assembled pre-engineered structural components, achieving millimeter-level precision to ensure the integrity of Ichijo's earthquake-resistant "Monocoque" structures.</li>
+          <li>Specialized in installing high-performance insulation and vapor barriers, contributing to Ichijo's industry-leading "i-smart" energy efficiency ratings.</li>
+          <li>Proficiently handled specialized Japanese building materials, including high-density insulation panels and engineered wood products.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="xp-item">
+      <div class="xp-when">Nov 2019 – Jun 2023<span class="xp-loc">Philippines</span></div>
+      <div>
+        <div class="xp-role">Carpenter · 8Dees Construction</div>
+        <ul class="xp-bullets">
+          <li>Built and installed structures using wood, metal, and other materials.</li>
+          <li>Executed framing, drywall installation, and finish carpentry with precision.</li>
+          <li>Collaborated with clients to understand project requirements and deliver tailored solutions.</li>
+          <li>Maintained tools and equipment in optimal working condition to ensure safety and efficiency.</li>
+          <li>Adhered to building codes and safety regulations throughout all projects.</li>
+          <li>Trained and supervised junior carpenters in best practices and techniques.</li>
+          <li>Completed projects on time and within budget, consistently meeting client expectations.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="xp-item">
+      <div class="xp-when">Oct 2017 – Sep 2019<span class="xp-loc">Cebu, Philippines</span></div>
+      <div>
+        <div class="xp-role">Store Maintenance Technician · Leylam</div>
+        <ul class="xp-bullets">
+          <li>Installed kiosk power systems, including routing conduits, pulling wires, and precisely terminating electrical power sources to support lighting, POS systems, and commercial appliances while ensuring safety compliance.</li>
+          <li>Built and assembled retail kiosks, handling structural modifications to existing layouts for aesthetic appeal and functional optimization in high-traffic environments.</li>
+          <li>Diagnosed and repaired structural issues, utilizing fine carpentry skills for cabinetry and counters, and maintained durable surfaces within the store environment.</li>
+          <li>Managed essential utility repairs, including the installation and maintenance of sinks, drainage systems, and water lines, and performed masonry work for floor tiling, wall repairs, and reinforced base structures.</li>
+          <li>Conducted high-quality repairs with minimal disruption to business operations, ensuring kiosks remained safe, operational, and compliant with building codes.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="xp-item">
+      <div class="xp-when">Oct 2011 – Oct 2017<span class="xp-loc">Lapu-Lapu, Philippines</span></div>
+      <div>
+        <div class="xp-role">Production Maintenance Technician · Toyoflex Cebu Corp. – Asahi Intecc Group</div>
+        <ul class="xp-bullets">
+          <li>Installed and terminated electrical power for heavy machinery, ensuring compliance with load and safety standards.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS + CERTS side by side -->
+  <div class="two-col">
+    <div class="sec">
+      <div class="sec-title">Trade Skills</div>
+      <div class="skills-grid">
+        <div class="skill-item">Modular home construction</div>
+        <div class="skill-item">Framing &amp; finish carpentry</div>
+        <div class="skill-item">Electrical installation</div>
+        <div class="skill-item">Insulation &amp; vapor barriers</div>
+        <div class="skill-item">Repairs &amp; renovations</div>
+        <div class="skill-item">Plumbing &amp; masonry</div>
+        <div class="skill-item">Facilities maintenance</div>
+        <div class="skill-item">Heavy equipment (Backhoe NC2)</div>
+        <div class="skill-item">Solar PV systems</div>
+        <div class="skill-item">Site safety compliance</div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-title">Certifications &amp; Licences</div>
+      <div style="display:grid;gap:9px;">
+        <div class="cert-box">
+          <div class="c-label">Heavy Equipment</div>
+          <div class="c-name">Backhoe Operator NC2</div>
+          <div class="c-desc">Philippines — heavy equipment certified on site.</div>
+        </div>
+        <div class="cert-box">
+          <div class="c-label">Electrical Trade</div>
+          <div class="c-name">Registered Master Electrician</div>
+          <div class="c-desc">Philippines — licensed for residential &amp; commercial electrical work.</div>
+        </div>
+        <div class="cert-box">
+          <div class="c-label">Site Safety</div>
+          <div class="c-name">Power Tool Safety</div>
+          <div class="c-desc">Certified safe handling of power tools on construction sites.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="sec">
+    <div class="sec-title">Education</div>
+    <div class="xp-item">
+      <div class="xp-when">2nd Year<span class="xp-loc">Philippines</span></div>
+      <div>
+        <div class="xp-role">BS Business Administration — Marketing</div>
+        <p style="font-size:9.8pt;color:var(--muted);margin-top:3px;">
+          International Peace Leadership College &nbsp;·&nbsp; Undergraduate (1st Semester, 2nd Year)
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LANGUAGES -->
+  <div class="sec" style="margin-top:4px;">
+    <div class="sec-title">Languages</div>
+    <div class="lang-row">
+      <div class="lang"><span class="l-name">English</span><span class="l-level">— Professional working proficiency</span></div>
+      <div class="lang"><span class="l-name">Japanese</span><span class="l-level">— Conversational (JLPT N4)</span></div>
+      <div class="lang"><span class="l-name">Tagalog</span><span class="l-level">— Native</span></div>
+      <div class="lang"><span class="l-name">Cebuano</span><span class="l-level">— Native</span></div>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="sec">
+    <div class="sec-title">References</div>
+    <p style="color:var(--muted);font-size:9.5pt;">Available on request.</p>
+  </div>
+
+</div>
+<script>
+  (function(){
+    // Header badge: total trade experience from Oct 2011
+    var s1 = new Date(2011, 9, 1);
+    var now = new Date();
+    var y = now.getFullYear() - s1.getFullYear();
+    var m = now.getMonth() - s1.getMonth();
+    if (now.getDate() < s1.getDate()) m--;
+    if (m < 0) { y--; m += 12; }
+    document.getElementById('cv-exp-count').textContent = y + ' yr ' + m + ' mo+';
+
+    // Summary: total trades experience from Oct 2011
+    var s2 = new Date(2011, 9, 1);
+    var ty = now.getFullYear() - s2.getFullYear();
+    var tm = now.getMonth() - s2.getMonth();
+    if (now.getDate() < s2.getDate()) tm--;
+    if (tm < 0) { ty--; tm += 12; }
+    document.getElementById('cv-summary-exp').textContent = ty + '+';
+  })();
+</script>
+
+<script>
+  var PIN    = '09022014';
+  var entry  = '';
+  var dots   = document.querySelectorAll('#pinDots span');
+  var gate   = document.getElementById('pinGate');
+  var errEl  = document.getElementById('pinError');
+
+  function updateDots() {
+    dots.forEach(function(d, i){ d.classList.toggle('filled', i < entry.length); });
+  }
+
+  function pinPress(digit) {
+    if (entry.length >= PIN.length) return;
+    entry += digit;
+    updateDots();
+    errEl.textContent = '';
+    if (entry.length === PIN.length) {
+      if (entry === PIN) {
+        gate.style.transition = 'opacity .35s';
+        gate.style.opacity = '0';
+        setTimeout(function(){ gate.style.display = 'none'; }, 360);
+      } else {
+        gate.classList.add('shake');
+        setTimeout(function(){ gate.classList.remove('shake'); entry = ''; updateDots(); }, 420);
+        setTimeout(function(){ errEl.textContent = 'Incorrect PIN — try again'; }, 420);
+      }
+    }
+  }
+
+  function pinBack() { entry = entry.slice(0, -1); updateDots(); errEl.textContent = ''; }
+  function pinClear() { entry = ''; updateDots(); errEl.textContent = ''; }
+
+  document.addEventListener('keydown', function(e) {
+    if (gate.style.display === 'none') return;
+    if (e.key >= '0' && e.key <= '9') pinPress(e.key);
+    else if (e.key === 'Backspace') pinBack();
+    else if (e.key === 'Escape') pinClear();
+  });
+</script>
+</body>
+</html>
