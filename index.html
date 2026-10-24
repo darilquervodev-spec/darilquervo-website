@@ -120,12 +120,14 @@
         <svg class="icon icon-close"><use href="#i-x"/></svg>
       </button>
     </div>
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
   </header>
 
   <main id="main">
 
     <!-- ══════════ Hero ══════════ -->
     <section id="home" class="hero section-dark">
+      <div class="hero-aurora" aria-hidden="true"><span></span><span></span><span></span></div>
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="badge-available"><span class="pulse" aria-hidden="true"></span>Available for Remote Work</p>
@@ -144,9 +146,9 @@
             <a href="#portfolio" class="btn btn-ghost btn-lg">View My Work</a>
           </div>
           <dl class="hero-stats">
-            <div><dt>4</dt><dd>Android apps shipped</dd></div>
-            <div><dt>2</dt><dd>iOS apps shipped</dd></div>
-            <div><dt>10+</dt><dd>Websites live</dd></div>
+            <div><dt data-count="4">4</dt><dd>Android apps shipped</dd></div>
+            <div><dt data-count="2">2</dt><dd>iOS apps shipped</dd></div>
+            <div><dt data-count="10" data-suffix="+">10+</dt><dd>Websites live</dd></div>
           </dl>
         </div>
 
@@ -165,6 +167,38 @@
         </div>
       </div>
     </section>
+
+    <!-- ══════════ Ticker ══════════ -->
+    <div class="marquee" role="region" aria-label="Services and tools">
+      <div class="marquee-track">
+        <ul class="marquee-group">
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>Email &amp; Calendar</li>
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>Website Development</li>
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>Android Apps</li>
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>iOS Apps</li>
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>AI Automation</li>
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>Data Entry</li>
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>Web Research</li>
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>Website Fixes &amp; SEO</li>
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>Customer Support</li>
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>Google Workspace</li>
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>Canva</li>
+        </ul>
+        <ul class="marquee-group" aria-hidden="true">
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>Email &amp; Calendar</li>
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>Website Development</li>
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>Android Apps</li>
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>iOS Apps</li>
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>AI Automation</li>
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>Data Entry</li>
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>Web Research</li>
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>Website Fixes &amp; SEO</li>
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>Customer Support</li>
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>Google Workspace</li>
+          <li><svg class="icon"><use href="#i-sparkles"/></svg>Canva</li>
+        </ul>
+      </div>
+    </div>
 
     <!-- ══════════ Services ══════════ -->
     <section id="services" class="section section-light">
@@ -661,12 +695,15 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     /* ── Header state + back-to-top ────────────────────────── */
-    var header = document.getElementById('site-header');
-    var toTop  = document.getElementById('back-to-top');
+    var header   = document.getElementById('site-header');
+    var toTop    = document.getElementById('back-to-top');
+    var progress = document.getElementById('scroll-progress');
     function onScroll() {
-      var y = window.scrollY;
+      var y   = window.scrollY;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
       header.classList.toggle('scrolled', y > 12);
       toTop.classList.toggle('visible', y > 700);
+      progress.style.setProperty('--p', max > 0 ? Math.min(y / max, 1) : 0);
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
@@ -712,20 +749,77 @@
     if ('IntersectionObserver' in window && !reduceMotion) {
       revealObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            revealObserver.unobserve(entry.target);
-          }
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          el.classList.add('is-visible');
+          revealObserver.unobserve(el);
+          // Hand control back to the element's own hover transitions once revealed
+          setTimeout(function () {
+            el.classList.remove('reveal', 'is-visible');
+            el.style.removeProperty('--d');
+          }, 900 + (parseInt(el.style.getPropertyValue('--d'), 10) || 0));
         });
       }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
     }
     function reveal(els) {
       Array.prototype.forEach.call(els, function (el) {
-        if (revealObserver) revealObserver.observe(el);
-        else el.classList.add('is-visible');
+        if (!revealObserver) { el.classList.remove('reveal'); return; }
+        // Stagger siblings so grids cascade in
+        var index = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
+        el.style.setProperty('--d', Math.min(index, 5) * 90 + 'ms');
+        revealObserver.observe(el);
       });
     }
     reveal(document.querySelectorAll('.reveal'));
+
+    /* ── Hero stats count-up ───────────────────────────────── */
+    if (!reduceMotion && window.requestAnimationFrame) {
+      document.querySelectorAll('[data-count]').forEach(function (el) {
+        var target = parseInt(el.getAttribute('data-count'), 10);
+        var suffix = el.getAttribute('data-suffix') || '';
+        el.textContent = '0' + suffix;
+        setTimeout(function () {
+          var start = null;
+          function step(t) {
+            if (start === null) start = t;
+            var p = Math.min((t - start) / 1400, 1);
+            el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + suffix;
+            if (p < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        }, 650);
+      });
+    }
+
+    /* ── Pointer effects (mouse / trackpad only) ───────────── */
+    if (!reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      // Gentle 3D tilt on the hero portrait
+      var visual = document.querySelector('.hero-visual');
+      var frame  = document.querySelector('.portrait-frame');
+      if (visual && frame) {
+        visual.addEventListener('pointermove', function (e) {
+          var r = visual.getBoundingClientRect();
+          var x = (e.clientX - r.left) / r.width - 0.5;
+          var y = (e.clientY - r.top) / r.height - 0.5;
+          frame.style.setProperty('--ry', (x * 10).toFixed(2) + 'deg');
+          frame.style.setProperty('--rx', (-y * 10).toFixed(2) + 'deg');
+        });
+        visual.addEventListener('pointerleave', function () {
+          frame.style.setProperty('--ry', '0deg');
+          frame.style.setProperty('--rx', '0deg');
+        });
+      }
+
+      // Cursor-following glow on cards
+      var GLOW = '.service-card, .project-card, .value-card, .price-card, .skill-card, .step, .app-row';
+      document.addEventListener('pointermove', function (e) {
+        var card = e.target.closest && e.target.closest(GLOW);
+        if (!card) return;
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      }, { passive: true });
+    }
 
     /* ── Projects (loaded from projects.json) ──────────────── */
     var CATEGORY_MAP = {
@@ -776,10 +870,10 @@
       return links;
     }
 
-    function buildCard(p) {
+    function buildCard(p, i) {
       var info  = CATEGORY_MAP[p.category] || CATEGORY_MAP.websites;
       var links = linksFor(p);
-      return '<article class="project-card" data-filter="' + info.filter + '">'
+      return '<article class="project-card" data-filter="' + info.filter + '" style="animation-delay:' + (i || 0) * 70 + 'ms">'
         + mediaHtml(p, info)
         + '<div class="project-body">'
         +   '<span class="project-badge ' + info.badge + '">' + info.label + '</span>'
