@@ -1,0 +1,55 @@
+[
+  {
+    "id": "modular-home",
+    "category": "carpentry",
+    "name": "Modular Home Construction",
+    "description": "Built hundreds of modular homes across Japan — from foundation to roof, including framing, finishing, and safety compliance.",
+    "photo": ""
+  },
+  {
+    "id": "shop-renovation",
+    "category": "carpentry",
+    "name": "Shop Renovation",
+    "description": "Prepared a small retail space with custom shelving, fixtures, and structural repairs.",
+    "photo": ""
+  },
+  {
+    "id": "residential-wiring",
+    "category": "electrical",
+    "name": "Residential Wiring & Installation",
+    "description": "Full residential electrical installation including panels, outlets, lighting circuits, and troubleshooting for homes in the Philippines.",
+    "photo": ""
+  },
+  {
+    "id": "solar-system-setup",
+    "category": "electrical",
+    "name": "Solar System Setup",
+    "description": "Troubleshooting and installation of off-grid solar power systems for residential clients, including wiring and component checks.",
+    "photo": ""
+  },
+  {
+    "id": "solar-pv-calc",
+    "category": "android",
+    "name": "Solar PV Calc – Solar Designer",
+    "description": "A solar panel sizing and design calculator app for Android. Helps users calculate the right solar system for their needs.",
+    "photo": "assets/projects/solar-app.webp",
+    "storeUrl": "",
+    "policyDate": "May 3, 2026"
+  },
+  {
+    "id": "moofy",
+    "category": "ios",
+    "name": "Moofy",
+    "description": "A personal budgeting mobile app for keeping track of everyday spending.",
+    "photo": "assets/projects/moofy-app.webp",
+    "storeUrl": ""
+  },
+  {
+    "id": "personal-portfolio",
+    "category": "websites",
+    "name": "Personal Portfolio",
+    "description": "This website — hand-built with HTML, CSS and vanilla JavaScript, with JSON-driven project content, app privacy/support pages and a working contact form.",
+    "photo": "",
+    "storeUrl": "https://darilquervo.com"
+  }
+]

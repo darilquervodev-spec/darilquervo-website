@@ -1,348 +1,960 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daril Quervo — Virtual Assistant & Web Developer | Japan-based, English-speaking</title>
-<meta name="description" content="Daril Quervo — tech-savvy Virtual Assistant and app/web developer based in Japan. Inbox, calendar, data entry, research, plus website fixes and automations other VAs can't do. English-speaking, reliable, affordable.">
-<link rel="canonical" href="https://darilquervo.com/">
-<meta property="og:title" content="Daril Quervo — Virtual Assistant & Web Developer">
-<meta property="og:description" content="The VA who can also fix your website. Japan-based, English-speaking, published app developer."> <meta name="google-adsense-account" content="ca-pub-6232716737381215">
-<meta property="og:url" content="https://darilquervo.com/">
-<meta name="google-site-verification" content="nwVKcEJ3fhwZ29wdhZ4KoFZXRKNHj6ftGcD2rr8tKV4" />
-<meta property="og:type" content="website">
-<style>
-  :root{
-    --bg:#0b0d10;
-    --bg2:#12151a;
-    --card:#161a20;
-    --line:#242a33;
-    --text:#e8eaed;
-    --muted:#9aa3ad;
-    --accent:#4fd1a5;
-    --accent2:#f0b429;
-    --radius:14px;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daril Quervo | Tech Virtual Assistant, Web &amp; App Developer</title>
+  <meta name="description" content="Daril Quervo is a Japan-based Tech Virtual Assistant, Web & App Developer and AI Automation Specialist helping businesses save time with reliable remote support, websites, apps and practical automation." />
+  <link rel="canonical" href="https://darilquervo.com/" />
+  <meta name="google-adsense-account" content="ca-pub-6232716737381215" />
+  <meta name="google-site-verification" content="nwVKcEJ3fhwZ29wdhZ4KoFZXRKNHj6ftGcD2rr8tKV4" />
+  <meta name="theme-color" content="#061326" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Daril Quervo" />
+  <meta property="og:title" content="Daril Quervo | Tech Virtual Assistant, Web & App Developer" />
+  <meta property="og:description" content="Reliable remote support, websites, mobile apps and practical automation for growing businesses." />
+  <meta property="og:url" content="https://darilquervo.com/" />
+  <meta property="og:image" content="https://darilquervo.com/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Daril Quervo — Tech Virtual Assistant, Web & App Developer, AI Automation Specialist" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Daril Quervo | Tech Virtual Assistant, Web & App Developer" />
+  <meta name="twitter:description" content="Reliable remote support, websites, mobile apps and practical automation for growing businesses." />
+  <meta name="twitter:image" content="https://darilquervo.com/assets/og-image.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="index.css" />
+  <link rel="preload" as="image" href="assets/daril-portrait.webp" type="image/webp" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Daril Quervo",
+    "alternateName": "Daril Bedua Quervo",
+    "url": "https://darilquervo.com/",
+    "image": "https://darilquervo.com/daril.jpg",
+    "jobTitle": "Tech Virtual Assistant, Web & App Developer",
+    "email": "mailto:darilquervo.dev@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kasuga",
+      "addressRegion": "Fukuoka",
+      "addressCountry": "JP"
+    },
+    "knowsLanguage": ["en", "ja", "tl", "ceb"],
+    "sameAs": ["https://github.com/darilquervodev-spec"]
   }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--text);font-family:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
-  a{color:var(--accent);text-decoration:none}
-  a:hover{text-decoration:underline}
-  .wrap{max-width:1060px;margin:0 auto;padding:0 20px}
-  section{padding:72px 0}
-  .eyebrow{color:var(--accent);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:10px}
-  h2{font-size:clamp(1.6rem,4vw,2.3rem);margin-bottom:18px;line-height:1.2}
-  .muted{color:var(--muted)}
-
-  /* Nav */
-  nav{position:sticky;top:0;background:rgba(11,13,16,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:1060px;margin:0 auto}
-  .logo{font-weight:800;letter-spacing:.06em;color:var(--text);font-size:1rem}
-  .logo span{color:var(--accent)}
-  .nav-links{display:flex;gap:22px;flex-wrap:wrap}
-  .nav-links a{color:var(--muted);font-size:.9rem}
-  .nav-links a:hover{color:var(--text);text-decoration:none}
-  .nav-links a.cta{color:var(--bg);background:var(--accent);padding:6px 14px;border-radius:999px;font-weight:700}
-
-  /* Hero */
-  .hero{padding:90px 0 70px;background:radial-gradient(ellipse at 20% -10%,#1a2f2a 0%,var(--bg) 55%)}
-  .hero-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:44px;align-items:center}
-  .kicker{color:var(--accent2);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;margin-bottom:14px}
-  h1{font-size:clamp(2.1rem,5.5vw,3.4rem);line-height:1.12;margin-bottom:18px}
-  h1 em{color:var(--accent);font-style:normal}
-  .hero p.lead{color:var(--muted);font-size:1.08rem;max-width:34rem;margin-bottom:26px}
-  .btn{display:inline-block;padding:13px 26px;border-radius:999px;font-weight:700;font-size:.95rem}
-  .btn-primary{background:var(--accent);color:var(--bg)}
-  .btn-primary:hover{filter:brightness(1.1);text-decoration:none}
-  .btn-ghost{border:1px solid var(--line);color:var(--text);margin-left:10px}
-  .btn-ghost:hover{border-color:var(--accent);text-decoration:none}
-  .fact-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
-  .fact-card h3{font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-  .fact-card ul{list-style:none}
-  .fact-card li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:.92rem}
-  .fact-card li:last-child{border-bottom:none}
-  .fact-card li b{color:var(--text);font-weight:600;text-align:right}
-  .fact-card li span{color:var(--muted)}
-  .ticks{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
-  .tick{font-size:.78rem;background:#1b2a25;color:var(--accent);border:1px solid #234437;border-radius:999px;padding:4px 11px}
-
-  /* About */
-  .about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:start}
-  .about p{margin-bottom:16px;color:#c7ccd2}
-  .about b{color:var(--text)}
-  .photo{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;text-align:center}
-  .photo img{width:100%;display:block}
-  .photo .cap{padding:10px;font-size:.8rem;color:var(--muted)}
-
-  /* Services */
-  .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:28px}
-  .svc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
-  .svc h3{font-size:1.02rem;margin-bottom:8px}
-  .svc p{font-size:.9rem;color:var(--muted)}
-  .svc .tag{display:inline-block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:8px;font-weight:700}
-  .svc.hl{border-color:var(--accent);background:linear-gradient(180deg,#16241f,var(--card))}
-
-  /* Pricing */
-  .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:30px}
-  .plan{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;display:flex;flex-direction:column}
-  .plan.featured{border-color:var(--accent);position:relative}
-  .plan.featured::before{content:"Most popular";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--bg);font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 12px;border-radius:999px}
-  .plan h3{font-size:1.05rem;margin-bottom:4px}
-  .plan .price{font-size:2rem;font-weight:800;color:var(--accent);margin:8px 0 2px}
-  .plan .per{font-size:.82rem;color:var(--muted);margin-bottom:16px}
-  .plan ul{list-style:none;margin-bottom:22px;flex:1}
-  .plan li{font-size:.88rem;color:#c7ccd2;padding:5px 0;padding-left:20px;position:relative}
-  .plan li::before{content:"✓";color:var(--accent);position:absolute;left:0}
-  .plan a{margin-top:auto;text-align:center}
-  .price-note{margin-top:18px;font-size:.85rem;color:var(--muted);text-align:center}
-
-  /* Dev section */
-  .dev-note{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent2);border-radius:var(--radius);padding:22px;margin-top:26px;font-size:.95rem;color:#c7ccd2}
-
-  /* Tools */
-  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-  .chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:.88rem;color:#c7ccd2}
-  .chip.plus{border-color:var(--accent2);color:var(--accent2)}
-
-  /* Timezone */
-  .tz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:26px}
-  .tz{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;text-align:center}
-  .tz b{display:block;font-size:1rem;color:var(--accent);margin-bottom:4px}
-  .tz span{font-size:.85rem;color:var(--muted)}
-
-  /* FAQ */
-  details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 22px;margin-bottom:12px}
-  details summary{cursor:pointer;font-weight:700;font-size:.98rem;list-style:none}
-  details summary::-webkit-details-marker{display:none}
-  details summary::after{content:"+";float:right;color:var(--accent);font-weight:800}
-  details[open] summary::after{content:"–"}
-  details p{margin-top:12px;color:var(--muted);font-size:.92rem}
-
-  /* Contact */
-  .contact-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:34px;margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:30px}
-  .contact-box h3{margin-bottom:10px}
-  .contact-links{list-style:none}
-  .contact-links li{padding:9px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
-  .contact-links li:last-child{border-bottom:none}
-  .contact-links span{color:var(--muted);display:block;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
-
-  footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:.85rem}
-  footer a{color:var(--muted)}
-
-  @media(max-width:820px){
-    .hero-grid,.about-grid,.contact-box{grid-template-columns:1fr}
-    .btn-ghost{margin-left:0;margin-top:10px}
-    section{padding:54px 0}
-  }
-</style>
+  </script>
+  <script>document.documentElement.classList.add('js');</script>
 </head>
+
 <body>
+  <!-- Icon sprite (Lucide-style, ISC licence) -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="i-headset" viewBox="0 0 24 24"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"/><path d="M21 16v2a4 4 0 0 1-4 4h-5"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></symbol>
+    <symbol id="i-bot" viewBox="0 0 24 24"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></symbol>
+    <symbol id="i-workflow" viewBox="0 0 24 24"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></symbol>
+    <symbol id="i-smartphone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></symbol>
+    <symbol id="i-hammer" viewBox="0 0 24 24"><path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></symbol>
+    <symbol id="i-message" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-trending" viewBox="0 0 24 24"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></symbol>
+    <symbol id="i-languages" viewBox="0 0 24 24"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
+    <symbol id="i-loader" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></symbol>
+  </svg>
 
-<nav>
-  <div class="nav-inner">
-    <div class="logo">DARIL<span>QUERVO</span></div>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact" class="cta">Hire me</a>
-    </div>
-  </div>
-</nav>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="kicker">Virtual Assistant · Web & App Developer</div>
-      <h1>Your assistant who <em>also builds.</em></h1>
-      <p class="lead">I handle your inbox, calendar, data, and research like any great VA — and unlike most VAs, I can also fix your website, automate your busywork, and ship real software. Based in Japan, working worldwide in English.</p>
-      <a class="btn btn-primary" href="#contact">Get in touch →</a>
-      <a class="btn btn-ghost" href="#pricing">See pricing</a>
+  <!-- ══════════ Navigation ══════════ -->
+  <header class="site-header" id="site-header">
+    <div class="container nav">
+      <a href="#home" class="brand" aria-label="Daril Quervo — home">
+        <span class="brand-mark" aria-hidden="true">DQ</span>
+        <span class="brand-name">Daril<span>Quervo</span></span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu" aria-label="Main">
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#apps">Apps</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="btn btn-primary nav-hire">Hire Me</a>
+      </nav>
+
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Open menu">
+        <svg class="icon icon-open"><use href="#i-menu"/></svg>
+        <svg class="icon icon-close"><use href="#i-x"/></svg>
+      </button>
     </div>
-    <aside class="fact-card">
-      <h3>At a glance</h3>
-      <ul>
-        <li><span>Name</span><b>Daril Quervo</b></li>
-        <li><span>Based in</span><b>Fukuoka, Japan</b></li>
-        <li><span>Works in</span><b>English · any timezone</b></li>
-        <li><span>Apps shipped</span><b>4 Android · 2 iOS</b></li>
-        <li><span>Websites live</span><b>3</b></li>
-        <li><span>Status</span><b>Available now</b></li>
+  </header>
+
+  <main id="main">
+
+    <!-- ══════════ Hero ══════════ -->
+    <section id="home" class="hero section-dark">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="badge-available"><span class="pulse" aria-hidden="true"></span>Available for Remote Work</p>
+          <h1>Your Business Deserves <span class="text-gradient">More Than</span> an Assistant.</h1>
+          <p class="hero-lead">
+            I'm Daril Quervo — a Tech Virtual Assistant, Web &amp; App Developer, and AI Automation Specialist.
+            I help businesses save time, streamline operations, and grow with practical digital solutions.
+          </p>
+          <ul class="hero-points">
+            <li><svg class="icon"><use href="#i-check"/></svg>Reliable Support</li>
+            <li><svg class="icon"><use href="#i-check"/></svg>Clean, Maintainable Solutions</li>
+            <li><svg class="icon"><use href="#i-check"/></svg>Clear Communication</li>
+          </ul>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary btn-lg">Hire Me <svg class="icon"><use href="#i-arrow-right"/></svg></a>
+            <a href="#portfolio" class="btn btn-ghost btn-lg">View My Work</a>
+          </div>
+          <dl class="hero-stats">
+            <div><dt>4</dt><dd>Android apps shipped</dd></div>
+            <div><dt>2</dt><dd>iOS apps shipped</dd></div>
+            <div><dt>3</dt><dd>Websites live</dd></div>
+          </dl>
+        </div>
+
+        <div class="hero-visual">
+          <div class="portrait-glow" aria-hidden="true"></div>
+          <figure class="portrait-frame">
+            <img src="assets/daril-portrait.webp" width="760" height="710"
+                 alt="Portrait of Daril Quervo smiling, wearing a dark blazer"
+                 fetchpriority="high" decoding="async"
+                 onerror="this.onerror=null;this.src='daril.jpg';" />
+          </figure>
+          <div class="float-chip chip-a" aria-hidden="true"><svg class="icon"><use href="#i-code"/></svg>Web &amp; App Dev</div>
+          <div class="float-chip chip-b" aria-hidden="true"><svg class="icon"><use href="#i-workflow"/></svg>AI Automation</div>
+          <div class="float-chip chip-c" aria-hidden="true"><svg class="icon"><use href="#i-pin"/></svg>Based in Japan · JST</div>
+          <p class="hand-note">Let's build something great together!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ Services ══════════ -->
+    <section id="services" class="section section-light">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">What I Do</p>
+          <h2>My Services</h2>
+          <p>Flexible solutions for your business needs.</p>
+        </header>
+
+        <div class="grid-3">
+          <article class="service-card reveal">
+            <div class="icon-tile"><svg class="icon"><use href="#i-headset"/></svg></div>
+            <h3>Tech Virtual Assistance</h3>
+            <p>Dependable day-to-day support that keeps your inbox, schedule and online presence organised.</p>
+            <ul class="check-list">
+              <li>Email and calendar management</li>
+              <li>Online research and data entry</li>
+              <li>Administrative and operational support</li>
+              <li>Customer support by email and chat</li>
+              <li>Social media scheduling, Canva graphics and documents</li>
+            </ul>
+            <a href="#contact" class="link-arrow" data-service="Tech Virtual Assistance">Learn More <svg class="icon"><use href="#i-arrow-right"/></svg></a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon-tile"><svg class="icon"><use href="#i-code"/></svg></div>
+            <h3>Website &amp; App Development</h3>
+            <p>Responsive websites and mobile apps that are clean, fast and easy to maintain.</p>
+            <ul class="check-list">
+              <li>Business websites and landing pages</li>
+              <li>Responsive UI implementation</li>
+              <li>Website updates, fixes, speed and SEO</li>
+              <li>Android &amp; iOS apps, published to the stores</li>
+            </ul>
+            <a href="#contact" class="link-arrow" data-service="Website Development">Learn More <svg class="icon"><use href="#i-arrow-right"/></svg></a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon-tile"><svg class="icon"><use href="#i-bot"/></svg></div>
+            <h3>AI &amp; Workflow Automation</h3>
+            <p>Practical automation that removes repetitive work so you can focus on growing the business.</p>
+            <ul class="check-list">
+              <li>AI-powered workflows</li>
+              <li>API integrations</li>
+              <li>Repetitive task automation</li>
+              <li>Practical business productivity tools</li>
+            </ul>
+            <a href="#contact" class="link-arrow" data-service="AI &amp; Workflow Automation">Learn More <svg class="icon"><use href="#i-arrow-right"/></svg></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ Featured Projects ══════════ -->
+    <section id="portfolio" class="section section-white">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Portfolio</p>
+          <h2>Featured Projects</h2>
+          <p>Real products, working demos, and practical solutions.</p>
+        </header>
+
+        <div class="filter-bar reveal" role="group" aria-label="Filter projects">
+          <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="filter-btn" data-filter="android" aria-pressed="false">Android</button>
+          <button type="button" class="filter-btn" data-filter="ios" aria-pressed="false">iOS</button>
+          <button type="button" class="filter-btn" data-filter="websites" aria-pressed="false">Websites</button>
+          <button type="button" class="filter-btn" data-filter="field" aria-pressed="false">Field Work</button>
+        </div>
+
+        <!-- Projects are loaded from projects.json — use admin.html to add new ones -->
+        <div class="projects-grid" id="projects-grid" aria-live="polite">
+          <p class="projects-loading">Loading projects…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ Apps (privacy & support links) ══════════ -->
+    <section id="apps" class="section section-light">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Apps</p>
+          <h2>My Mobile Apps</h2>
+          <p>Store listings, privacy policies and support pages for the apps I've built.</p>
+        </header>
+        <div class="apps-list" id="apps-list">
+          <p class="projects-loading">Loading apps…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ About ══════════ -->
+    <section id="about" class="section section-white">
+      <div class="container about-grid">
+        <div class="about-photo reveal">
+          <img src="assets/daril-portrait.webp" width="760" height="710" loading="lazy" decoding="async"
+               alt="Daril Quervo, Tech Virtual Assistant and developer"
+               onerror="this.onerror=null;this.src='daril.jpg';" />
+          <div class="about-photo-tag">
+            <svg class="icon"><use href="#i-pin"/></svg>
+            <span>Kasuga, Fukuoka, Japan</span>
+          </div>
+        </div>
+
+        <div class="about-copy reveal">
+          <p class="eyebrow">Who I Am</p>
+          <h2>About Me</h2>
+          <p class="lead">
+            I'm Daril Quervo, a tech-oriented developer and digital problem solver. I enjoy building useful websites,
+            mobile applications, and automation tools that help people and businesses work smarter.
+          </p>
+          <p>
+            I'm from Cebu, Philippines, and currently in Japan as a skilled worker under the Philippine government's
+            official Technical Intern Training Program (TITP), building earthquake-resistant homes to Japanese precision
+            standards. Outside work hours I taught myself web and app development and shipped real products to the
+            App Store and Google Play.
+          </p>
+          <p>
+            Before Japan I spent over a decade in hands-on trades — registered Master Electrician, carpenter and
+            maintenance technician. That background shapes how I work today: on time, careful, and focused on getting
+            the details right.
+          </p>
+
+          <dl class="facts">
+            <div><dt><svg class="icon"><use href="#i-pin"/></svg>Location</dt><dd>Kasuga, Fukuoka, Japan (JST, UTC+9)</dd></div>
+            <div><dt><svg class="icon"><use href="#i-languages"/></svg>Languages</dt><dd>English, Japanese (JLPT N4 level), Tagalog &amp; Cebuano</dd></div>
+            <div><dt><svg class="icon"><use href="#i-clock"/></svg>Open to</dt><dd>Part-time, project-based or ongoing remote work</dd></div>
+          </dl>
+
+          <div class="about-actions">
+            <a href="#contact" class="btn btn-primary">Let's Talk <svg class="icon"><use href="#i-arrow-right"/></svg></a>
+            <!-- Hidden until HAS_CV is set to true in the script below -->
+            <a href="cv/Daril-Quervo-CV.pdf" class="btn btn-outline" data-cv hidden download>
+              <svg class="icon"><use href="#i-download"/></svg> Download CV
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ Skills & Technologies ══════════ -->
+    <section id="skills" class="section section-light">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Toolbox</p>
+          <h2>Skills &amp; Technologies</h2>
+          <p>The tools and skills I use day to day.</p>
+        </header>
+
+        <div class="skills-grid">
+          <article class="skill-card reveal">
+            <h3><svg class="icon"><use href="#i-globe"/></svg>Web Development</h3>
+            <ul class="tags">
+              <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Responsive design</li><li>JSON-driven content</li><li>GitHub Pages</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3><svg class="icon"><use href="#i-smartphone"/></svg>Mobile Apps</h3>
+            <ul class="tags">
+              <li>Android apps</li><li>iOS apps</li><li>App Store &amp; Google Play publishing</li><li>App privacy &amp; support pages</li><li>Ad setup (app-ads.txt)</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3><svg class="icon"><use href="#i-workflow"/></svg>AI &amp; Automation</h3>
+            <ul class="tags">
+              <li>AI-assisted workflows</li><li>Form &amp; API integrations</li><li>Task automation</li><li>Productivity tools</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3><svg class="icon"><use href="#i-headset"/></svg>Virtual Assistance</h3>
+            <ul class="tags">
+              <li>Email &amp; calendar</li><li>Online research</li><li>Data entry</li><li>Website content updates</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3><svg class="icon"><use href="#i-layers"/></svg>Tools</h3>
+            <ul class="tags">
+              <li>Google Workspace</li><li>Microsoft Office</li><li>Zoom</li><li>Slack</li><li>Trello</li><li>Asana</li>
+              <li>Notion</li><li>Canva</li><li>Git &amp; GitHub</li><li>VS Code</li><li>Xcode</li>
+            </ul>
+          </article>
+          <article class="skill-card reveal">
+            <h3><svg class="icon"><use href="#i-languages"/></svg>Communication</h3>
+            <ul class="tags">
+              <li>English</li><li>Japanese (N4)</li><li>Tagalog</li><li>Cebuano</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ Why Work With Me ══════════ -->
+    <section id="why" class="section section-dark why">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Working Values</p>
+          <h2>Why Work With Me?</h2>
+          <p>How I approach every task and project.</p>
+        </header>
+        <div class="grid-4">
+          <article class="value-card reveal">
+            <div class="icon-tile"><svg class="icon"><use href="#i-bulb"/></svg></div>
+            <h3>Fast Learner</h3>
+            <p>Adapt to new tools and workflows.</p>
+          </article>
+          <article class="value-card reveal">
+            <div class="icon-tile"><svg class="icon"><use href="#i-search"/></svg></div>
+            <h3>Detail-Oriented</h3>
+            <p>Focus on quality and accuracy.</p>
+          </article>
+          <article class="value-card reveal">
+            <div class="icon-tile"><svg class="icon"><use href="#i-message"/></svg></div>
+            <h3>Clear Communication</h3>
+            <p>Provide understandable updates.</p>
+          </article>
+          <article class="value-card reveal">
+            <div class="icon-tile"><svg class="icon"><use href="#i-trending"/></svg></div>
+            <h3>Long-Term Mindset</h3>
+            <p>Aim for dependable collaboration.</p>
+          </article>
+        </div>
+
+        <h3 class="tz-title reveal">Working from Japan (JST) for clients worldwide</h3>
+        <div class="tz-grid">
+          <div class="tz-card reveal"><b>US clients</b><span>Your evening is my working morning — wake up to finished work.</span></div>
+          <div class="tz-card reveal"><b>AU / NZ clients</b><span>Near-full overlap with your business hours.</span></div>
+          <div class="tz-card reveal"><b>EU / UK clients</b><span>Your morning overlaps my afternoon — same-day turnaround.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ What You Can Expect (no testimonials yet) ══════════ -->
+    <section id="process" class="section section-white">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">How It Works</p>
+          <h2>What You Can Expect</h2>
+          <p>A simple, transparent way of working together.</p>
+        </header>
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step-num">01</span>
+            <h3>Tell me what you need</h3>
+            <p>Send a message with your goals, tasks or project idea. I reply within 1–2 days, usually much faster.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-num">02</span>
+            <h3>Agree on scope</h3>
+            <p>We confirm the tasks, hours or deliverables and the price before any work starts.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-num">03</span>
+            <h3>Regular updates</h3>
+            <p>You get clear progress updates, and questions are raised early instead of guessed.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-num">04</span>
+            <h3>Handover &amp; support</h3>
+            <p>Finished work is documented and handed over, with help available when you need it.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ══════════ Pricing ══════════ -->
+    <section id="pricing" class="section section-light">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Pricing</p>
+          <h2>Simple Monthly Packages</h2>
+          <p>Clear USD pricing. No contracts — pause or cancel any month.</p>
+        </header>
+
+        <div class="pricing-grid">
+          <article class="price-card reveal">
+            <h3>Starter</h3>
+            <p class="price"><span class="amount">$80</span><span class="period">/month</span></p>
+            <p class="hours"><svg class="icon"><use href="#i-clock"/></svg>10 hours per month</p>
+            <ul class="check-list">
+              <li>Any mix of admin services</li>
+              <li>Email &amp; chat support with me</li>
+              <li>Weekly summary of work done</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline btn-block" data-service="Starter ($80/month)">Start Here</a>
+          </article>
+
+          <article class="price-card featured reveal">
+            <span class="ribbon">Most Popular</span>
+            <h3>Standard</h3>
+            <p class="price"><span class="amount">$150</span><span class="period">/month</span></p>
+            <p class="hours"><svg class="icon"><use href="#i-clock"/></svg>20 hours per month</p>
+            <ul class="check-list">
+              <li>Everything in Starter</li>
+              <li>Website updates included</li>
+              <li>Priority response times</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary btn-block" data-service="Standard ($150/month)">Choose Standard</a>
+          </article>
+
+          <article class="price-card reveal">
+            <h3>Dedicated</h3>
+            <p class="price"><span class="amount">$280+</span><span class="period">/month</span></p>
+            <p class="hours"><svg class="icon"><use href="#i-clock"/></svg>40+ hours per month</p>
+            <ul class="check-list">
+              <li>Everything in Standard</li>
+              <li>Automations &amp; tech projects</li>
+              <li>Your go-to right hand</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline btn-block" data-service="Dedicated ($280+/month)">Let's Talk</a>
+          </article>
+        </div>
+
+        <p class="pricing-note reveal">
+          <svg class="icon"><use href="#i-file"/></svg>
+          One-off or ad-hoc tasks: <strong>$10/hour</strong>. Development projects (websites, apps) are quoted
+          separately — <a href="#contact" data-service="Website Development">tell me what you need</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════ FAQ ══════════ -->
+    <section id="faq" class="section section-white">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">FAQ</p>
+          <h2>Before You Reach Out</h2>
+          <p>Quick answers to common questions.</p>
+        </header>
+        <div class="faq-list">
+          <details class="reveal" open>
+            <summary>Why are you based in Japan?</summary>
+            <p>I'm here through an official Philippine government skilled-worker program, working in Japanese construction. It's taught me punctuality, precision, and follow-through the Japanese way — and my evenings and weekends are dedicated to my clients. Japan's timezone also means I overlap with US evenings, AU business hours, and EU mornings.</p>
+          </details>
+          <details class="reveal">
+            <summary>How fast do you reply?</summary>
+            <p>Within 1–2 days at most, usually much faster. For active clients, same day.</p>
+          </details>
+          <details class="reveal">
+            <summary>What makes you different from other VAs?</summary>
+            <p>Most VAs stop where the tech starts. I've published six apps to the App Store and Google Play and run three live websites — so when your site breaks, your tools need connecting, or a workflow needs automating, I handle it instead of telling you to hire a developer.</p>
+          </details>
+          <details class="reveal">
+            <summary>How does payment work?</summary>
+            <p>Monthly packages are paid at the start of the month. One-off tasks: deposit up front, balance on delivery. I'll always confirm scope and price in writing before starting.</p>
+          </details>
+          <details class="reveal">
+            <summary>Can we start small?</summary>
+            <p>Yes — start with a single small task or the Starter package. No long-term commitment; earn my keep first.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ Contact ══════════ -->
+    <section id="contact" class="section section-light">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Contact</p>
+          <h2>Let's Work Together</h2>
+          <p>Have a project in mind or need help with something? Send me a message and let's discuss how I can help.</p>
+        </header>
+
+        <div class="contact-grid">
+          <aside class="contact-info reveal">
+            <h3>Get in touch</h3>
+            <p>Prefer email or chat? Reach me directly — I reply within 1–2 days, usually much faster.</p>
+            <ul class="contact-list">
+              <li>
+                <span class="ci-icon"><svg class="icon"><use href="#i-mail"/></svg></span>
+                <span><small>Email</small><a href="mailto:darilquervo.dev@gmail.com">darilquervo.dev@gmail.com</a></span>
+              </li>
+              <li>
+                <span class="ci-icon"><svg class="icon"><use href="#i-message"/></svg></span>
+                <span><small>LINE</small><a href="https://line.me/ti/p/YMigpeLlZr" target="_blank" rel="noopener">Add me on LINE</a></span>
+              </li>
+              <li>
+                <span class="ci-icon"><svg class="icon"><use href="#i-github"/></svg></span>
+                <span><small>GitHub</small><a href="https://github.com/darilquervodev-spec" target="_blank" rel="noopener">darilquervodev-spec</a></span>
+              </li>
+              <li>
+                <span class="ci-icon"><svg class="icon"><use href="#i-pin"/></svg></span>
+                <span><small>Location</small>Kasuga City, Fukuoka, Japan</span>
+              </li>
+            </ul>
+            <a href="cv/Daril-Quervo-CV.pdf" class="btn btn-light" data-cv hidden download>
+              <svg class="icon"><use href="#i-download"/></svg> Download CV
+            </a>
+          </aside>
+
+          <form id="contact-form" class="contact-form reveal" action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <input type="hidden" name="access_key" value="0b277f88-e5a1-434e-b54a-f22bae1f93a6">
+            <input type="hidden" name="subject" value="New message from DarilWorks Portfolio">
+            <input type="hidden" name="from_name" value="DarilWorks Contact Form">
+            <!-- Honeypot — catches spam bots, leave this hidden -->
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="form-row">
+              <div class="field">
+                <label for="name">Full name</label>
+                <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required minlength="2" maxlength="100" aria-describedby="name-error" />
+                <p class="field-error" id="name-error"></p>
+              </div>
+              <div class="field">
+                <label for="email">Email address</label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required maxlength="150" aria-describedby="email-error" />
+                <p class="field-error" id="email-error"></p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="service">Service needed</label>
+              <select id="service" name="service" required aria-describedby="service-error">
+                <option value="">Select a service…</option>
+                <option>Tech Virtual Assistance</option>
+                <option>Website Development</option>
+                <option>Mobile App Development</option>
+                <option>AI &amp; Workflow Automation</option>
+                <option>Starter ($80/month)</option>
+                <option>Standard ($150/month)</option>
+                <option>Dedicated ($280+/month)</option>
+                <option>One-off task ($10/hour)</option>
+                <option>Something else</option>
+              </select>
+              <p class="field-error" id="service-error"></p>
+            </div>
+
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell me about your project or the tasks you need help with…" required minlength="10" maxlength="5000" aria-describedby="message-error"></textarea>
+              <p class="field-error" id="message-error"></p>
+            </div>
+
+            <button type="submit" id="submit-btn" class="btn btn-primary btn-block btn-lg">
+              <svg class="icon icon-send"><use href="#i-send"/></svg>
+              <svg class="icon icon-spin"><use href="#i-loader"/></svg>
+              <span class="btn-label">Send Message</span>
+            </button>
+            <p class="form-note">Your message goes directly to my inbox. I never share your details.</p>
+
+            <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ══════════ Footer ══════════ -->
+  <footer class="site-footer section-dark">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="brand" aria-label="Daril Quervo — back to top">
+          <span class="brand-mark" aria-hidden="true">DQ</span>
+          <span class="brand-name">Daril<span>Quervo</span></span>
+        </a>
+        <p>Tech virtual assistance, web &amp; app development and practical automation for growing businesses.</p>
+      </div>
+      <nav aria-label="Footer">
+        <ul class="footer-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#apps">Apps</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="cv/">CV</a></li>
+          <li><a href="carpentry/">Carpentry CV</a></li>
+        </ul>
+      </nav>
+      <ul class="socials">
+        <li><a href="mailto:darilquervo.dev@gmail.com" aria-label="Email Daril"><svg class="icon"><use href="#i-mail"/></svg></a></li>
+        <li><a href="https://github.com/darilquervodev-spec" target="_blank" rel="noopener" aria-label="GitHub profile"><svg class="icon"><use href="#i-github"/></svg></a></li>
+        <li><a href="https://line.me/ti/p/YMigpeLlZr" target="_blank" rel="noopener" aria-label="LINE"><svg class="icon"><use href="#i-message"/></svg></a></li>
       </ul>
-      <div class="ticks">
-        <span class="tick">✓ App Store published</span>
-        <span class="tick">✓ Google Play published</span>
-        <span class="tick">✓ Licensed Master Electrician</span>
-        <span class="tick">✓ Ships real work</span>
-      </div>
-    </aside>
-  </div>
-</header>
-
-<section id="about">
-  <div class="wrap about-grid">
-    <div class="about">
-      <div class="eyebrow">About</div>
-      <h2>Discipline from the job site. Skills from the screen.</h2>
-      <p>I'm Daril — a <b>virtual assistant and self-taught developer</b> from Cebu, Philippines, currently in Japan as a skilled worker under the Philippine government's official <b>Technical Intern Training Program (TITP)</b>, building earthquake-resistant homes to Japanese precision standards.</p>
-      <p>Outside work hours, I taught myself web and app development and <b>shipped real products to the App Store and Google Play</b>. That combination — Japanese work discipline plus self-taught tech skills — is what I bring to every client: I show up on time, follow through, communicate clearly, and solve problems other assistants have to outsource.</p>
-      <p>Before Japan I spent over a decade in hands-on trades: registered <b>Master Electrician</b>, carpenter, and maintenance technician. I know how small businesses actually run, because I've worked inside them.</p>
-      <p class="muted">Languages: English · Japanese (N4) · Tagalog · Cebuano</p>
     </div>
-    <div class="photo">
-      <img src="daril.jpg" alt="Daril Quervo">
-      <div class="cap">Daril Quervo — Fukuoka, Japan</div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Daril Quervo. All rights reserved.</p>
+      <p>Hand-built with HTML, CSS &amp; JavaScript.</p>
     </div>
-  </div>
-</section>
+  </footer>
 
-<section id="services" style="background:var(--bg2)">
-  <div class="wrap">
-    <div class="eyebrow">Services</div>
-    <h2>What I can take off your plate</h2>
-    <p class="muted">Everyday admin support, plus the tech tasks most VAs can't do.</p>
-    <div class="svc-grid">
-      <div class="svc"><span class="tag">Admin</span><h3>Inbox & email management</h3><p>Cleaning, sorting, drafting replies, and keeping your inbox at zero so you only see what matters.</p></div>
-      <div class="svc"><span class="tag">Admin</span><h3>Calendar & scheduling</h3><p>Booking meetings across timezones, sending reminders, and protecting your focus time.</p></div>
-      <div class="svc"><span class="tag">Admin</span><h3>Data entry & spreadsheets</h3><p>Accurate, fast data work in Excel and Google Sheets — cleanup, formulas, and simple reports.</p></div>
-      <div class="svc"><span class="tag">Admin</span><h3>Web research</h3><p>Competitor research, lead lists, price comparisons, and summaries you can act on.</p></div>
-      <div class="svc"><span class="tag">Support</span><h3>Customer support</h3><p>Friendly, professional email and chat support in fluent English, with clear escalation.</p></div>
-      <div class="svc"><span class="tag">Content</span><h3>Social media & documents</h3><p>Scheduling posts, simple Canva graphics, and preparing polished docs, PDFs, and slides.</p></div>
-      <div class="svc hl"><span class="tag">Tech — my edge</span><h3>Website updates & fixes</h3><p>Content updates, bug fixes, new pages, speed and SEO improvements — no need to hire a separate developer.</p></div>
-      <div class="svc hl"><span class="tag">Tech — my edge</span><h3>Automations & apps</h3><p>Automating repetitive workflows, connecting your tools, and even building simple apps. I've shipped 6 to the app stores.</p></div>
-    </div>
-    <div class="dev-note"><b>Need a full website or mobile app?</b> I also take on development projects — static sites, business catalogs, and cross-platform apps published to Google Play and the App Store. <a href="#contact">Ask for a quote</a>.</div>
-  </div>
-</section>
+  <a href="#home" class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg class="icon"><use href="#i-arrow-up"/></svg>
+  </a>
 
-<section id="pricing">
-  <div class="wrap">
-    <div class="eyebrow">Pricing</div>
-    <h2>Simple monthly packages</h2>
-    <p class="muted">Clear USD pricing. No contracts — pause or cancel any month.</p>
-    <div class="price-grid">
-      <div class="plan">
-        <h3>Starter</h3>
-        <div class="price">$80</div>
-        <div class="per">per month · 10 hours</div>
-        <ul>
-          <li>Any admin services mix</li>
-          <li>Email & chat support with me</li>
-          <li>Weekly summary of work done</li>
-        </ul>
-        <a class="btn btn-ghost" href="#contact">Start here →</a>
-      </div>
-      <div class="plan featured">
-        <h3>Standard</h3>
-        <div class="price">$150</div>
-        <div class="per">per month · 20 hours</div>
-        <ul>
-          <li>Everything in Starter</li>
-          <li>Website updates included</li>
-          <li>Priority response times</li>
-        </ul>
-        <a class="btn btn-primary" href="#contact">Most popular →</a>
-      </div>
-      <div class="plan">
-        <h3>Dedicated</h3>
-        <div class="price">$280+</div>
-        <div class="per">per month · 40+ hours</div>
-        <ul>
-          <li>Everything in Standard</li>
-          <li>Automations & tech projects</li>
-          <li>Your go-to right hand</li>
-        </ul>
-        <a class="btn btn-ghost" href="#contact">Let's talk →</a>
-      </div>
-    </div>
-    <p class="price-note">One-off or ad-hoc tasks: <b style="color:var(--accent)">$10/hour</b>. Development projects (websites, apps) quoted separately — <a href="#contact">tell me what you need</a>.</p>
-  </div>
-</section>
+  <script>
+  (function () {
+    'use strict';
 
-<section id="tools" style="background:var(--bg2)">
-  <div class="wrap">
-    <div class="eyebrow">Tools</div>
-    <h2>What I work with</h2>
-    <div class="chips">
-      <span class="chip">Google Workspace</span>
-      <span class="chip">Microsoft Office</span>
-      <span class="chip">Zoom</span>
-      <span class="chip">Slack</span>
-      <span class="chip">Trello</span>
-      <span class="chip">Asana</span>
-      <span class="chip">Notion</span>
-      <span class="chip">Canva</span>
-      <span class="chip plus">HTML / CSS / JavaScript</span>
-      <span class="chip plus">Git & GitHub</span>
-      <span class="chip plus">VS Code · Xcode</span>
-      <span class="chip plus">App Store & Play publishing</span>
-    </div>
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    <div class="tz-grid">
-      <div class="tz"><b>🇺🇸 US clients</b><span>Your evening = my working morning. Wake up to finished work.</span></div>
-      <div class="tz"><b>🇦🇺 AU / NZ clients</b><span>Near-full overlap with your business hours.</span></div>
-      <div class="tz"><b>🇪🇺 EU / UK clients</b><span>Your morning overlaps my afternoon — same-day turnaround.</span></div>
-    </div>
-  </div>
-</section>
+    /* ── Footer year ───────────────────────────────────────── */
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-<section id="faq">
-  <div class="wrap">
-    <div class="eyebrow">FAQ</div>
-    <h2>Before you reach out</h2>
-    <details open>
-      <summary>Why are you based in Japan?</summary>
-      <p>I'm here through an official Philippine government skilled-worker program, working in Japanese construction. It's taught me punctuality, precision, and follow-through the Japanese way — and my evenings and weekends are dedicated to my clients. Japan's timezone also means I overlap with US evenings, AU business hours, and EU mornings.</p>
-    </details>
-    <details>
-      <summary>How fast do you reply?</summary>
-      <p>Within 1–2 days at most, usually much faster. For active clients, same day.</p>
-    </details>
-    <details>
-      <summary>What makes you different from other VAs?</summary>
-      <p>Most VAs stop where the tech starts. I've published six apps to the App Store and Google Play and run three live websites — so when your site breaks, your tools need connecting, or a workflow needs automating, I handle it instead of telling you to hire a developer.</p>
-    </details>
-    <details>
-      <summary>How does payment work?</summary>
-      <p>Monthly packages are paid at the start of the month. One-off tasks: deposit up front, balance on delivery. I'll always confirm scope and price in writing before starting.</p>
-    </details>
-    <details>
-      <summary>Can we start small?</summary>
-      <p>Yes — start with a single small task or the Starter package. No long-term commitment; earn my keep first.</p>
-    </details>
-  </div>
-</section>
+    /* ── Header state + back-to-top ────────────────────────── */
+    var header = document.getElementById('site-header');
+    var toTop  = document.getElementById('back-to-top');
+    function onScroll() {
+      var y = window.scrollY;
+      header.classList.toggle('scrolled', y > 12);
+      toTop.classList.toggle('visible', y > 700);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
-<section id="contact" style="background:var(--bg2)">
-  <div class="wrap">
-    <div class="eyebrow">Contact</div>
-    <h2>Let's work together</h2>
-    <p class="muted">Tell me what's eating your time — I'll reply within 1–2 days with a plain-language plan and price.</p>
-    <div class="contact-box">
-      <div>
-        <h3>Reach me directly</h3>
-        <ul class="contact-links">
-          <li><span>Email</span><a href="mailto:darilquervo.dev@gmail.com">darilquervo.dev@gmail.com</a></li>
-          <li><span>LINE</span><a href="https://line.me/ti/p/YMigpeLlZr">Message me on LINE</a></li>
-          <li><span>GitHub</span><a href="https://github.com/darilquervodev-spec">github.com/darilquervodev-spec</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>What to include</h3>
-        <p class="muted" style="font-size:.92rem">Your business, the tasks you want off your plate, and roughly how many hours a month you need. Not sure? Just describe your day — I'll suggest the simplest option that fits. No pressure, no sales calls.</p>
-        <a class="btn btn-primary" style="margin-top:18px" href="mailto:darilquervo.dev@gmail.com?subject=VA%20inquiry%20from%20your%20website">Email me now →</a>
-      </div>
-    </div>
-  </div>
-</section>
+    /* ── Mobile menu ───────────────────────────────────────── */
+    var toggle = document.getElementById('nav-toggle');
+    var menu   = document.getElementById('nav-menu');
+    function setMenu(open) {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      header.classList.toggle('menu-open', open);
+    }
+    toggle.addEventListener('click', function () {
+      setMenu(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+    menu.addEventListener('click', function (e) {
+      if (e.target.closest('a')) setMenu(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && header.classList.contains('menu-open')) { setMenu(false); toggle.focus(); }
+    });
 
-<footer>
-  <div class="wrap">
-    © Daril Quervo — Virtual Assistant & Web Developer · Fukuoka, Japan<br>
-    <a href="/carpentry/">My carpentry CV</a> · <a href="https://github.com/darilquervodev-spec">GitHub</a>
-  </div>
-</footer>
+    /* ── Active nav link ───────────────────────────────────── */
+    var navLinks = document.querySelectorAll('.nav-links a');
+    if ('IntersectionObserver' in window) {
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          navLinks.forEach(function (a) {
+            if (a.getAttribute('href') === '#' + entry.target.id) a.setAttribute('aria-current', 'true');
+            else a.removeAttribute('aria-current');
+          });
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      navLinks.forEach(function (a) {
+        var target = document.querySelector(a.getAttribute('href'));
+        if (target) spy.observe(target);
+      });
+    }
 
+    /* ── Reveal on scroll ──────────────────────────────────── */
+    var revealObserver = null;
+    if ('IntersectionObserver' in window && !reduceMotion) {
+      revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    }
+    function reveal(els) {
+      Array.prototype.forEach.call(els, function (el) {
+        if (revealObserver) revealObserver.observe(el);
+        else el.classList.add('is-visible');
+      });
+    }
+    reveal(document.querySelectorAll('.reveal'));
+
+    /* ── Projects (loaded from projects.json) ──────────────── */
+    var CATEGORY_MAP = {
+      android:    { label: 'Android',    badge: 'badge-android',    filter: 'android',  icon: 'i-smartphone' },
+      ios:        { label: 'iOS',        badge: 'badge-ios',        filter: 'ios',      icon: 'i-smartphone' },
+      websites:   { label: 'Website',    badge: 'badge-website',    filter: 'websites', icon: 'i-globe' },
+      carpentry:  { label: 'Carpentry',  badge: 'badge-field',      filter: 'field',    icon: 'i-hammer' },
+      electrical: { label: 'Electrical', badge: 'badge-field',      filter: 'field',    icon: 'i-zap' }
+    };
+    var TECH_ORDER  = { android: 0, ios: 0, websites: 0, carpentry: 1, electrical: 1 };
+    var STORE_LABELS = { android: 'Google Play', ios: 'App Store', websites: 'Live Site' };
+
+    function esc(str) {
+      return String(str || '')
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    // Only allow http(s) and relative links from projects.json
+    function safeUrl(url) {
+      url = String(url || '').trim();
+      return /^(https?:\/\/|[a-z0-9_\-./]+$)/i.test(url) ? url : '';
+    }
+
+    function svgIcon(id) {
+      return '<svg class="icon" aria-hidden="true"><use href="#' + id + '"/></svg>';
+    }
+
+    function mediaHtml(p, info) {
+      var photo = safeUrl(p.photo);
+      if (photo) {
+        return '<div class="project-media"><img src="' + esc(photo) + '" alt="' + esc(p.name) + ' app icon" loading="lazy" decoding="async" width="480" height="480" onerror="this.parentNode.classList.add(\'is-placeholder\');this.remove();"></div>';
+      }
+      return '<div class="project-media is-placeholder" aria-hidden="true">' + svgIcon(info.icon) + '</div>';
+    }
+
+    function linksFor(p) {
+      var links = [];
+      var store = safeUrl(p.storeUrl);
+      var isApp = p.category === 'android' || p.category === 'ios';
+      if (store && STORE_LABELS[p.category]) {
+        links.push('<a href="' + esc(store) + '" class="pill-link pill-primary" target="_blank" rel="noopener">'
+          + STORE_LABELS[p.category] + ' ' + svgIcon('i-external') + '</a>');
+      }
+      if (isApp) {
+        links.push('<a href="privacy-policy.html?app=' + encodeURIComponent(p.id) + '" class="pill-link">Privacy Policy</a>');
+        links.push('<a href="support.html?app=' + encodeURIComponent(p.id) + '" class="pill-link">Support</a>');
+      }
+      return links;
+    }
+
+    function buildCard(p) {
+      var info  = CATEGORY_MAP[p.category] || CATEGORY_MAP.websites;
+      var links = linksFor(p);
+      return '<article class="project-card" data-filter="' + info.filter + '">'
+        + mediaHtml(p, info)
+        + '<div class="project-body">'
+        +   '<span class="project-badge ' + info.badge + '">' + info.label + '</span>'
+        +   '<h3>' + esc(p.name) + '</h3>'
+        +   '<p>' + esc(p.description) + '</p>'
+        +   (links.length ? '<div class="project-links">' + links.join('') + '</div>' : '')
+        + '</div>'
+        + '</article>';
+    }
+
+    function buildAppRow(p) {
+      var info  = CATEGORY_MAP[p.category];
+      var photo = safeUrl(p.photo);
+      var thumb = photo
+        ? '<img src="' + esc(photo) + '" alt="" loading="lazy" decoding="async" width="64" height="64">'
+        : svgIcon(info.icon);
+      var store = safeUrl(p.storeUrl);
+      return '<article class="app-row reveal">'
+        + '<div class="app-thumb">' + thumb + '</div>'
+        + '<div class="app-meta"><h3>' + esc(p.name) + '</h3>'
+        +   '<span class="project-badge ' + info.badge + '">' + info.label + '</span>'
+        +   (store ? '' : '<span class="app-soon">Store link coming soon</span>')
+        + '</div>'
+        + '<div class="project-links">' + linksFor(p).join('') + '</div>'
+        + '</article>';
+    }
+
+    function initFilters() {
+      var btns = document.querySelectorAll('.filter-btn');
+      btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var f = btn.getAttribute('data-filter');
+          btns.forEach(function (b) {
+            b.classList.toggle('active', b === btn);
+            b.setAttribute('aria-pressed', String(b === btn));
+          });
+          document.querySelectorAll('.project-card').forEach(function (card) {
+            card.hidden = !(f === 'all' || card.getAttribute('data-filter') === f);
+          });
+        });
+      });
+    }
+
+    var grid    = document.getElementById('projects-grid');
+    var appList = document.getElementById('apps-list');
+    fetch('projects.json')
+      .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
+      .then(function (projects) {
+        var sorted = projects.slice().sort(function (a, b) {
+          return (TECH_ORDER[a.category] || 0) - (TECH_ORDER[b.category] || 0);
+        });
+        grid.innerHTML = sorted.map(buildCard).join('');
+        initFilters();
+
+        var apps = projects.filter(function (p) { return p.category === 'android' || p.category === 'ios'; });
+        if (apps.length) {
+          appList.innerHTML = apps.map(buildAppRow).join('');
+          reveal(appList.querySelectorAll('.reveal'));
+        } else {
+          appList.innerHTML = '<p class="projects-loading">New apps are on the way.</p>';
+        }
+      })
+      .catch(function () {
+        var msg = '<p class="projects-loading">Could not load projects. Make sure the site is running on a server or GitHub Pages.</p>';
+        grid.innerHTML = msg;
+        appList.innerHTML = msg;
+      });
+
+    /* ── CV button ─────────────────────────────────────────── */
+    // Shows the Download CV buttons (cv/Daril-Quervo-CV.pdf). Set to false to hide them.
+    var HAS_CV = true;
+    if (HAS_CV) {
+      document.querySelectorAll('[data-cv]').forEach(function (a) { a.hidden = false; });
+    }
+
+    /* ── Pre-select a service when a CTA links to the form ─── */
+    var serviceSelect = document.getElementById('service');
+    document.querySelectorAll('[data-service]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        var wanted = link.getAttribute('data-service');
+        Array.prototype.some.call(serviceSelect.options, function (opt) {
+          if (opt.value === wanted) { serviceSelect.value = wanted; clearError(serviceSelect); return true; }
+          return false;
+        });
+      });
+    });
+
+    /* ── Contact form — validation + AJAX submit ───────────── */
+    var form      = document.getElementById('contact-form');
+    var submitBtn = document.getElementById('submit-btn');
+    var btnLabel  = submitBtn.querySelector('.btn-label');
+    var statusEl  = document.getElementById('form-status');
+    var sending   = false;
+    var EMAIL_RE  = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    function setError(field, msg) {
+      field.setAttribute('aria-invalid', 'true');
+      document.getElementById(field.id + '-error').textContent = msg;
+    }
+    function clearError(field) {
+      field.removeAttribute('aria-invalid');
+      document.getElementById(field.id + '-error').textContent = '';
+    }
+
+    function validateField(field) {
+      var v = field.value.trim();
+      if (field.id === 'name' && v.length < 2) return 'Please enter your name.';
+      if (field.id === 'email' && !EMAIL_RE.test(v)) return 'Please enter a valid email address.';
+      if (field.id === 'service' && !v) return 'Please choose the service you need.';
+      if (field.id === 'message' && v.length < 10) return 'Please write a little more about what you need (at least 10 characters).';
+      return '';
+    }
+
+    var fields = ['name', 'email', 'service', 'message'].map(function (id) { return document.getElementById(id); });
+    fields.forEach(function (field) {
+      field.addEventListener('blur', function () {
+        if (!field.value) return;
+        var msg = validateField(field);
+        if (msg) setError(field, msg); else clearError(field);
+      });
+      field.addEventListener('input', function () {
+        if (field.getAttribute('aria-invalid') === 'true' && !validateField(field)) clearError(field);
+      });
+    });
+
+    function showStatus(type, html) {
+      statusEl.className = 'form-status is-' + type;
+      statusEl.innerHTML = html;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (sending) return;
+
+      var firstInvalid = null;
+      fields.forEach(function (field) {
+        var msg = validateField(field);
+        if (msg) { setError(field, msg); if (!firstInvalid) firstInvalid = field; }
+        else clearError(field);
+      });
+      if (firstInvalid) { firstInvalid.focus(); return; }
+
+      sending = true;
+      submitBtn.disabled = true;
+      submitBtn.classList.add('is-loading');
+      btnLabel.textContent = 'Sending…';
+      statusEl.className = 'form-status';
+      statusEl.innerHTML = '';
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      })
+        .then(function (r) { return r.json().then(function (data) { return { ok: r.ok, data: data }; }); })
+        .then(function (res) {
+          if (res.ok && res.data && res.data.success) {
+            form.reset();
+            showStatus('success', '<strong>Message sent!</strong> Thank you — I\'ll get back to you within 1–2 days.');
+          } else {
+            throw new Error();
+          }
+        })
+        .catch(function () {
+          showStatus('error', 'Sorry, your message could not be sent. Please try again or email me directly at '
+            + '<a href="mailto:darilquervo.dev@gmail.com">darilquervo.dev@gmail.com</a>.');
+        })
+        .finally(function () {
+          sending = false;
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('is-loading');
+          btnLabel.textContent = 'Send Message';
+        });
+    });
+  })();
+  </script>
 </body>
 </html>
