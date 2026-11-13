@@ -28,7 +28,13 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
+  <!-- Fonts load without blocking first paint; Caveat is subset to the one phrase that uses it -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap&text=Let%27s%20build%20something%20great%20together%21" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap&text=Let%27s%20build%20something%20great%20together%21" />
+  </noscript>
   <link rel="stylesheet" href="index.css" />
   <link rel="preload" as="image" href="assets/daril-portrait.webp" type="image/webp" />
 
@@ -133,7 +139,7 @@
   <main id="main">
 
     <!-- ══════════ Hero ══════════ -->
-    <section id="home" class="hero section-dark">
+    <section id="home" class="hero section-dark" data-anim>
       <div class="hero-aurora" aria-hidden="true"><span></span><span></span><span></span></div>
       <div class="container hero-grid">
         <div class="hero-copy">
@@ -180,7 +186,7 @@
     </section>
 
     <!-- ══════════ Ticker ══════════ -->
-    <div class="marquee" role="region" aria-label="Services and tools">
+    <div class="marquee" role="region" aria-label="Services and tools" data-anim>
       <div class="marquee-track">
         <ul class="marquee-group">
           <li><svg class="icon"><use href="#i-sparkles"/></svg>Email &amp; Calendar</li>
@@ -482,7 +488,7 @@
     </section>
 
     <!-- ══════════ Pricing ══════════ -->
-    <section id="pricing" class="section section-light">
+    <section id="pricing" class="section section-light" data-anim>
       <div class="container">
         <header class="section-head reveal">
           <p class="eyebrow">Pricing</p>
@@ -539,7 +545,7 @@
 
     <!-- ══════════ FAQ ══════════ -->
     <!-- ══════════ DarskeeWorks studio ══════════ -->
-    <section id="studio" class="section section-dark studio-band" aria-labelledby="studio-title">
+    <section id="studio" class="section section-dark studio-band" aria-labelledby="studio-title" data-anim>
       <div class="container studio-grid reveal">
         <div class="studio-copy">
           <p class="eyebrow">My Studio</p>
@@ -745,15 +751,38 @@
     var header   = document.getElementById('site-header');
     var toTop    = document.getElementById('back-to-top');
     var progress = document.getElementById('scroll-progress');
-    function onScroll() {
-      var y   = window.scrollY;
-      var max = document.documentElement.scrollHeight - window.innerHeight;
+    var scrollMax = 0, scrollTicking = false;
+    function measure() {
+      scrollMax = document.documentElement.scrollHeight - window.innerHeight;
+    }
+    function update() {
+      scrollTicking = false;
+      var y = window.scrollY;
       header.classList.toggle('scrolled', y > 12);
       toTop.classList.toggle('visible', y > 700);
-      progress.style.setProperty('--p', max > 0 ? Math.min(y / max, 1) : 0);
+      progress.style.setProperty('--p', scrollMax > 0 ? Math.min(y / scrollMax, 1) : 0);
+    }
+    function onScroll() {
+      if (!scrollTicking) { scrollTicking = true; requestAnimationFrame(update); }
     }
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    window.addEventListener('resize', function () { measure(); onScroll(); }, { passive: true });
+    window.addEventListener('load', function () { measure(); onScroll(); });
+    if ('ResizeObserver' in window) {
+      new ResizeObserver(function () { measure(); onScroll(); }).observe(document.body);
+    }
+    measure();
+    update();
+
+    /* ── Pause looping animations while their section is off-screen ── */
+    if ('IntersectionObserver' in window) {
+      var animObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          entry.target.classList.toggle('anim-off', !entry.isIntersecting);
+        });
+      }, { rootMargin: '100px 0px' });
+      document.querySelectorAll('[data-anim]').forEach(function (el) { animObserver.observe(el); });
+    }
 
     /* ── Mobile menu ───────────────────────────────────────── */
     var toggle = document.getElementById('nav-toggle');

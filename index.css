@@ -758,9 +758,7 @@ a {
   gap: 0.5rem;
   padding: 0.6rem 0.95rem;
   border-radius: 14px;
-  background: rgba(10, 29, 56, 0.86);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  background: rgba(10, 29, 56, 0.94);
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--white);
   font-size: 0.85rem;
@@ -2161,7 +2159,23 @@ a {
 }
 
 @keyframes hero-in-visual {
-  from { opacity: 0; transform: translateY(30px) scale(0.96); }
+  from { transform: translateY(30px) scale(0.96); }
+}
+
+/* Largest elements stay visible from the first frame (keeps LCP fast) */
+.hero-copy > h1,
+.hero-copy > .hero-lead {
+  animation-name: hero-rise;
+}
+
+@keyframes hero-rise {
+  from { transform: translateY(24px); }
+}
+
+/* Looping animations pause while their section is off-screen */
+.anim-off,
+.anim-off * {
+  animation-play-state: paused !important;
 }
 
 /* Shimmering accent words */
