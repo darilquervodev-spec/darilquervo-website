@@ -2708,3 +2708,182 @@ a {
     text-align: left;
   }
 }
+
+/* ── UX: portfolio preview, filter counts, quote bar, copy, FAQ motion ── */
+
+.filter-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.45rem;
+  height: 1.45rem;
+  margin-left: 0.3rem;
+  padding: 0 0.35rem;
+  border-radius: 999px;
+  background: rgba(15, 103, 230, 0.1);
+  color: var(--blue-600);
+  font-size: 0.75rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.filter-btn.active .filter-count {
+  background: rgba(255, 255, 255, 0.18);
+  color: inherit;
+}
+
+.projects-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.25rem;
+}
+
+.projects-more[hidden] {
+  display: none;
+}
+
+.project-media-link {
+  display: block;
+  color: inherit;
+  cursor: pointer;
+}
+
+.project-media {
+  transition: filter 0.3s var(--ease);
+}
+
+.project-media-link:hover .project-media {
+  filter: brightness(1.06);
+}
+
+.project-media.is-shot img {
+  transition: transform 0.5s var(--ease);
+}
+
+.project-card:hover .project-media.is-shot img {
+  transform: scale(1.04);
+}
+
+/* Credentials stay in view beside the timeline on wide screens */
+@media (min-width: 901px) {
+  .exp-side {
+    position: sticky;
+    top: calc(var(--header-h) + 1.5rem);
+  }
+}
+
+/* Pre-filled service: brief highlight so visitors see it was chosen for them */
+#service.is-prefilled {
+  animation: prefill-glow 1.6s var(--ease);
+}
+
+@keyframes prefill-glow {
+  0%, 40% {
+    border-color: var(--blue-600);
+    box-shadow: 0 0 0 4px rgba(22, 119, 255, 0.22);
+  }
+}
+
+/* Copy email */
+.copy-btn {
+  margin-left: 0.35rem;
+  padding: 0.15rem 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--on-dark);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.copy-btn:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.copy-btn.is-copied {
+  border-color: #22C55E;
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ADE80;
+}
+
+/* Smooth FAQ open/close where supported */
+@supports (interpolate-size: allow-keywords) {
+  .faq-list details {
+    interpolate-size: allow-keywords;
+  }
+
+  .faq-list details::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition: block-size 0.3s var(--ease), content-visibility 0.3s allow-discrete;
+  }
+
+  .faq-list details[open]::details-content {
+    block-size: auto;
+  }
+}
+
+/* Sticky quote bar (phones) */
+.mobile-cta {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .mobile-cta {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 45;
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    padding: 0.7rem 16px calc(0.7rem + env(safe-area-inset-bottom, 0px));
+    background: rgba(6, 19, 38, 0.96);
+    border-top: 1px solid var(--line-dark);
+    box-shadow: 0 -10px 30px rgba(6, 19, 38, 0.25);
+    transform: translateY(110%);
+    transition: transform 0.3s var(--ease);
+  }
+
+  .mobile-cta.is-visible {
+    transform: none;
+  }
+
+  .mobile-cta .btn {
+    flex: 1;
+    min-height: 48px;
+  }
+
+  .mobile-cta-icon {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    border: 1px solid var(--line-dark);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--on-dark);
+  }
+
+  .mobile-cta-icon:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+  }
+
+  .has-mobile-cta .back-to-top {
+    bottom: calc(5.25rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-cta,
+  .faq-list details::details-content {
+    transition: none;
+  }
+}

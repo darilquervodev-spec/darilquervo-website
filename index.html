@@ -327,6 +327,9 @@
         <div class="projects-grid" id="projects-grid" aria-live="polite">
           <p class="projects-loading">Loading projects…</p>
         </div>
+        <div class="projects-more" id="projects-more" hidden>
+          <button type="button" class="btn btn-outline" id="projects-toggle" aria-controls="projects-grid" aria-expanded="false"></button>
+        </div>
       </div>
     </section>
 
@@ -732,7 +735,7 @@
             <ul class="contact-list">
               <li>
                 <span class="ci-icon"><svg class="icon"><use href="#i-mail"/></svg></span>
-                <span><small>Email</small><a href="mailto:darilquervo.dev@gmail.com">darilquervo.dev@gmail.com</a></span>
+                <span><small>Email</small><a href="mailto:darilquervo.dev@gmail.com">darilquervo.dev@gmail.com</a> <button type="button" class="copy-btn" data-copy="darilquervo.dev@gmail.com" aria-label="Copy email address">Copy</button></span>
               </li>
               <li>
                 <span class="ci-icon"><svg class="icon"><use href="#i-message"/></svg></span>
@@ -852,6 +855,13 @@
     </div>
   </footer>
 
+  <!-- Sticky quote bar (phones only, shown between the hero and the contact form) -->
+  <div class="mobile-cta" id="mobile-cta" inert>
+    <a href="#contact" class="btn btn-primary">Get a Free Quote <svg class="icon"><use href="#i-arrow-right"/></svg></a>
+    <a href="https://line.me/ti/p/YMigpeLlZr" class="mobile-cta-icon" target="_blank" rel="noopener" aria-label="Chat on LINE"><svg class="icon"><use href="#i-message"/></svg></a>
+    <a href="mailto:darilquervo.dev@gmail.com" class="mobile-cta-icon" aria-label="Email Daril"><svg class="icon"><use href="#i-mail"/></svg></a>
+  </div>
+
   <a href="#home" class="back-to-top" id="back-to-top" aria-label="Back to top">
     <svg class="icon"><use href="#i-arrow-up"/></svg>
   </a>
@@ -901,6 +911,46 @@
       }, { rootMargin: '100px 0px' });
       document.querySelectorAll('[data-anim]').forEach(function (el) { animObserver.observe(el); });
     }
+
+    /* ── Sticky quote bar on phones ────────────────────────── */
+    var mobileCta = document.getElementById('mobile-cta');
+    if (mobileCta && 'IntersectionObserver' in window) {
+      var ctaState = { hero: true, contact: false, footer: false };
+      var setCta = function () {
+        var show = !ctaState.hero && !ctaState.contact && !ctaState.footer && !header.classList.contains('menu-open');
+        mobileCta.classList.toggle('is-visible', show);
+        document.body.classList.toggle('has-mobile-cta', show);
+        if (show) mobileCta.removeAttribute('inert'); else mobileCta.setAttribute('inert', '');
+      };
+      var ctaObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { ctaState[e.target.getAttribute('data-cta')] = e.isIntersecting; });
+        setCta();
+      });
+      [['home', 'hero'], ['contact', 'contact']].forEach(function (pair) {
+        var el = document.getElementById(pair[0]);
+        if (el) { el.setAttribute('data-cta', pair[1]); ctaObserver.observe(el); }
+      });
+      var footerEl = document.querySelector('.site-footer');
+      if (footerEl) { footerEl.setAttribute('data-cta', 'footer'); ctaObserver.observe(footerEl); }
+      new MutationObserver(setCta).observe(header, { attributes: true, attributeFilter: ['class'] });
+    }
+
+    /* ── Copy-to-clipboard buttons ─────────────────────────── */
+    document.querySelectorAll('[data-copy]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var text = btn.getAttribute('data-copy');
+        var done = function () {
+          btn.textContent = 'Copied!';
+          btn.classList.add('is-copied');
+          setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('is-copied'); }, 1800);
+        };
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(done, function () { window.location.href = 'mailto:' + text; });
+        } else {
+          window.location.href = 'mailto:' + text;
+        }
+      });
+    });
 
     /* ── Mobile menu ───────────────────────────────────────── */
     var toggle = document.getElementById('nav-toggle');
@@ -1075,8 +1125,14 @@
     function buildCard(p, i) {
       var info  = CATEGORY_MAP[p.category] || CATEGORY_MAP.websites;
       var links = linksFor(p);
-      return '<article class="project-card" data-filter="' + info.filter + '" style="animation-delay:' + (i || 0) * 70 + 'ms">'
-        + mediaHtml(p, info)
+      var href  = safeUrl(p.storeUrl);
+      var media = mediaHtml(p, info);
+      if (href) {
+        // Image opens the same link as the main button (kept out of tab order to avoid a duplicate stop)
+        media = '<a class="project-media-link" href="' + esc(href) + '" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">' + media + '</a>';
+      }
+      return '<article class="project-card" data-filter="' + info.filter + '" style="animation-delay:' + ((i || 0) % 6) * 70 + 'ms">'
+        + media
         + '<div class="project-body">'
         +   '<span class="project-badge ' + info.badge + '">' + info.label + '</span>'
         +   '<h3>' + esc(p.name) + '</h3>'
@@ -1103,20 +1159,57 @@
         + '</article>';
     }
 
+    var PREVIEW_COUNT = 6;
     function initFilters() {
-      var btns = document.querySelectorAll('.filter-btn');
+      var btns   = document.querySelectorAll('.filter-btn');
+      var cards  = Array.prototype.slice.call(document.querySelectorAll('.project-card'));
+      var more   = document.getElementById('projects-more');
+      var toggle = document.getElementById('projects-toggle');
+      var current = 'all', expanded = false;
+
+      // Show how many projects each filter holds
+      btns.forEach(function (btn) {
+        var f = btn.getAttribute('data-filter');
+        var n = f === 'all' ? cards.length : cards.filter(function (c) { return c.getAttribute('data-filter') === f; }).length;
+        btn.insertAdjacentHTML('beforeend', ' <span class="filter-count">' + n + '</span>');
+      });
+
+      function apply() {
+        var shown = 0;
+        cards.forEach(function (card) {
+          var match = current === 'all' || card.getAttribute('data-filter') === current;
+          var collapsed = current === 'all' && !expanded && match && shown >= PREVIEW_COUNT;
+          if (match) shown++;
+          card.hidden = !match || collapsed;
+        });
+        var canCollapse = current === 'all' && cards.length > PREVIEW_COUNT;
+        more.hidden = !canCollapse;
+        toggle.textContent = expanded ? 'Show fewer projects' : 'Show all projects (' + cards.length + ')';
+        toggle.setAttribute('aria-expanded', String(expanded));
+      }
+
       btns.forEach(function (btn) {
         btn.addEventListener('click', function () {
-          var f = btn.getAttribute('data-filter');
+          current = btn.getAttribute('data-filter');
           btns.forEach(function (b) {
             b.classList.toggle('active', b === btn);
             b.setAttribute('aria-pressed', String(b === btn));
           });
-          document.querySelectorAll('.project-card').forEach(function (card) {
-            card.hidden = !(f === 'all' || card.getAttribute('data-filter') === f);
-          });
+          apply();
         });
       });
+      toggle.addEventListener('click', function () {
+        expanded = !expanded;
+        apply();
+        if (expanded) {
+          var next = cards[PREVIEW_COUNT];
+          var firstLink = next && next.querySelector('.pill-link');
+          if (firstLink) firstLink.focus({ preventScroll: true });
+        } else {
+          document.getElementById('portfolio').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+      });
+      apply();
     }
 
     var grid    = document.getElementById('projects-grid');
@@ -1157,7 +1250,13 @@
       link.addEventListener('click', function () {
         var wanted = link.getAttribute('data-service');
         Array.prototype.some.call(serviceSelect.options, function (opt) {
-          if (opt.value === wanted) { serviceSelect.value = wanted; clearError(serviceSelect); return true; }
+          if (opt.value === wanted) {
+            serviceSelect.value = wanted; clearError(serviceSelect);
+            serviceSelect.classList.remove('is-prefilled');
+            void serviceSelect.offsetWidth; // restart the highlight animation
+            serviceSelect.classList.add('is-prefilled');
+            return true;
+          }
           return false;
         });
       });
