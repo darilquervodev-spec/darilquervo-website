@@ -2361,3 +2361,123 @@ a {
     transform: none;
   }
 }
+
+/* ── DarskeeWorks studio links ────────────────────────────────────────── */
+
+.nav-links .nav-studio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.nav-links .nav-studio .icon {
+  width: 0.85em;
+  height: 0.85em;
+}
+
+.hero-studio {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin: 0 0 1.5rem;
+  color: var(--on-dark-muted);
+  font-size: 0.95rem;
+}
+
+.hero-studio .icon {
+  flex: none;
+  margin-top: 0.2rem;
+  color: var(--cyan);
+}
+
+.hero-studio a,
+.studio-band a:not(.btn),
+.footer-studio a,
+.footer-bottom a {
+  color: var(--cyan);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.hero-studio a:hover,
+.studio-band a:not(.btn):hover,
+.footer-studio a:hover,
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+.studio-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.studio-copy h2 {
+  font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0.25rem 0 1rem;
+  color: var(--white);
+}
+
+.studio-copy > p {
+  color: var(--on-dark-muted);
+  max-width: 60ch;
+}
+
+.studio-copy strong {
+  color: var(--on-dark);
+}
+
+.studio-points {
+  list-style: none;
+  display: grid;
+  gap: 0.7rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  color: var(--on-dark-muted);
+}
+
+.studio-points li {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+
+.studio-points .icon {
+  flex: none;
+  margin-top: 0.25rem;
+  color: var(--cyan);
+}
+
+.studio-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  align-items: stretch;
+}
+
+.footer-brand .footer-studio {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 860px) {
+  .studio-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+}
+
+/* Extra nav item (DarskeeWorks): keep one line before the menu collapses */
+.nav-hire {
+  white-space: nowrap;
+}
+
+@media (min-width: 1081px) and (max-width: 1260px) {
+  .nav-links a {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}

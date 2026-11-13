@@ -51,5 +51,13 @@
     "description": "This website — hand-built with HTML, CSS and vanilla JavaScript, with JSON-driven project content, app privacy/support pages and a working contact form.",
     "photo": "",
     "storeUrl": "https://darilquervo.com"
+  },
+  {
+    "id": "darskeeworks",
+    "category": "websites",
+    "name": "DarskeeWorks — Studio & Digital Shop",
+    "description": "My own studio website: website, app and software services plus a marketplace of ready-made templates and tools for teachers, small businesses and creators.",
+    "photo": "",
+    "storeUrl": "https://darskeeworks.online/"
   }
 ]
