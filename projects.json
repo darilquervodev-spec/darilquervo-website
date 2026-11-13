@@ -1,16 +1,125 @@
 [
   {
+    "id": "mochi-sensei",
+    "category": "ios",
+    "name": "Mochi Sensei – JLPT Study Master",
+    "description": "An AI-powered Japanese study companion for passing the JLPT, live on the App Store.",
+    "photo": "assets/projects/mochi-sensei-app.webp",
+    "storeUrl": "https://apps.apple.com/jp/app/mochi-sensei-jlpt-study-master/id6787880229",
+    "privacyUrl": "https://darskeeworks.online/privacy-mochisensei.html",
+    "supportUrl": "https://darskeeworks.online/support-mochisensei.html"
+  },
+  {
+    "id": "darskee-sales-inventory",
+    "category": "android",
+    "name": "Darskee Sales & Inventory POS",
+    "description": "A smart point-of-sale app for small retailers: track sales, inventory, barcodes and profit, even offline.",
+    "photo": "assets/projects/inventory-app.webp",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.darskeeworks.darskee",
+    "privacyUrl": "https://darskeeworks.online/privacy-sales-inventory.html",
+    "supportUrl": "support.html?app=darskee-sales-inventory"
+  },
+  {
+    "id": "darskeeai",
+    "category": "websites",
+    "name": "DarskeeAI.com – AI Video Creation Studio",
+    "description": "An all-in-one AI studio that turns ideas into scripts, consistent characters, images, voiceovers and finished short videos for TikTok, Reels and YouTube Shorts.",
+    "photo": "assets/projects/darskeeai.webp",
+    "storeUrl": "https://darskeeai.com/"
+  },
+  {
+    "id": "darskee-jlpt-ai",
+    "category": "websites",
+    "name": "Darskee JLPT AI – Japanese Study Platform",
+    "description": "Structured Japanese study from JLPT N5 to N1: lessons, vocabulary, kanji, grammar, listening, spaced-repetition flashcards and timed mock exams.",
+    "photo": "assets/projects/darskee-jlpt-ai.webp",
+    "storeUrl": "https://jlpt.darskeeai.com/"
+  },
+  {
+    "id": "guroassist-ph",
+    "category": "websites",
+    "name": "GuroAssist PH",
+    "description": "An AI assistant that creates lesson documents for Filipino teachers, saving hours of paperwork every week.",
+    "photo": "assets/projects/guroassist-ph.webp",
+    "storeUrl": "https://guroassistph.site/"
+  },
+  {
+    "id": "moofy",
+    "category": "ios",
+    "name": "Moofy – Your Budget Buddy",
+    "description": "A friendly personal budgeting app for keeping track of everyday spending, on the App Store.",
+    "photo": "assets/projects/moofy-app.webp",
+    "storeUrl": "https://apps.apple.com/jp/app/moofy-personal-budget-buddy/id6764759098",
+    "privacyUrl": "https://darskeeworks.online/privacy-moofy.html",
+    "supportUrl": "support.html?app=moofy"
+  },
+  {
+    "id": "solar-pv-calc",
+    "category": "android",
+    "name": "Solar PV Calc – Solar Designer",
+    "description": "A solar panel sizing and design calculator that helps users plan the right solar system for their needs.",
+    "photo": "assets/projects/solar-app.webp",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.darskee.solarcalc",
+    "privacyUrl": "https://darskeeworks.online/privacy-solar-pv-calc.html",
+    "supportUrl": "support.html?app=solar-pv-calc",
+    "policyDate": "May 3, 2026"
+  },
+  {
+    "id": "budget-tracker",
+    "category": "android",
+    "name": "Budget Tracker by Darskee",
+    "description": "Track expenses, manage income and loans, and reach savings goals, with multi-currency support.",
+    "photo": "assets/projects/budget-tracker-app.webp",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.darskee.personalbudgettracker",
+    "privacyUrl": "https://darskeeworks.online/privacy-budget-tracker.html",
+    "supportUrl": "support.html?app=budget-tracker"
+  },
+  {
+    "id": "darskee-pass-jlpt-n4",
+    "category": "android",
+    "name": "Darskee Pass JLPT N4",
+    "description": "Master JLPT N4 with vocabulary, grammar, kanji and practice tests.",
+    "photo": "assets/projects/n4-app.webp",
+    "storeUrl": "https://play.google.com/store/apps/details?id=com.darskeeworks.passjlptn4",
+    "privacyUrl": "https://darskeeworks.online/privacy-darskee-pass-n4.html",
+    "supportUrl": "support.html?app=darskee-pass-jlpt-n4"
+  },
+  {
+    "id": "darskee-ai",
+    "category": "websites",
+    "name": "Darskee AI – Friendly AI Assistant",
+    "description": "A friendly AI chat assistant for writing, learning, brainstorming and coding, powered by a self-hosted open model.",
+    "photo": "assets/projects/darskee-ai-chat.webp",
+    "storeUrl": "https://chat.darskeeai.com/"
+  },
+  {
+    "id": "carpentry-calculators",
+    "category": "websites",
+    "name": "Carpentry Calculators",
+    "description": "Free practical calculators for carpentry, woodworking and construction in imperial, metric and Japanese units. No sign-up needed.",
+    "photo": "assets/projects/carpentry-calculators.webp",
+    "storeUrl": "https://carpentry-calculators-production.up.railway.app/"
+  },
+  {
+    "id": "darskeeworks",
+    "category": "websites",
+    "name": "DarskeeWorks – Studio & Digital Shop",
+    "description": "My studio website: website, app and software services plus a shop of ready-made templates and tools for teachers, small businesses and creators.",
+    "photo": "assets/projects/darskeeworks.webp",
+    "storeUrl": "https://darskeeworks.online/"
+  },
+  {
     "id": "modular-home",
     "category": "carpentry",
     "name": "Modular Home Construction",
-    "description": "Built hundreds of modular homes across Japan — from foundation to roof, including framing, finishing, and safety compliance.",
+    "description": "With ICHIJO Homes in Japan: assembling pre-engineered, earthquake-resistant homes to millimetre tolerances under strict quality and safety standards.",
     "photo": ""
   },
   {
     "id": "shop-renovation",
     "category": "carpentry",
-    "name": "Shop Renovation",
-    "description": "Prepared a small retail space with custom shelving, fixtures, and structural repairs.",
+    "name": "Retail Kiosks & Shop Fit-Outs",
+    "description": "At Leylam in Cebu: built retail kiosks and shop fit-outs and installed kiosk power, POS and lighting circuits.",
     "photo": ""
   },
   {
@@ -26,38 +135,5 @@
     "name": "Solar System Setup",
     "description": "Troubleshooting and installation of off-grid solar power systems for residential clients, including wiring and component checks.",
     "photo": ""
-  },
-  {
-    "id": "solar-pv-calc",
-    "category": "android",
-    "name": "Solar PV Calc – Solar Designer",
-    "description": "A solar panel sizing and design calculator app for Android. Helps users calculate the right solar system for their needs.",
-    "photo": "assets/projects/solar-app.webp",
-    "storeUrl": "",
-    "policyDate": "May 3, 2026"
-  },
-  {
-    "id": "moofy",
-    "category": "ios",
-    "name": "Moofy",
-    "description": "A personal budgeting mobile app for keeping track of everyday spending.",
-    "photo": "assets/projects/moofy-app.webp",
-    "storeUrl": ""
-  },
-  {
-    "id": "personal-portfolio",
-    "category": "websites",
-    "name": "Personal Portfolio",
-    "description": "This website — hand-built with HTML, CSS and vanilla JavaScript, with JSON-driven project content, app privacy/support pages and a working contact form.",
-    "photo": "",
-    "storeUrl": "https://darilquervo.com"
-  },
-  {
-    "id": "darskeeworks",
-    "category": "websites",
-    "name": "DarskeeWorks — Studio & Digital Shop",
-    "description": "My own studio website: website, app and software services plus a marketplace of ready-made templates and tools for teachers, small businesses and creators.",
-    "photo": "",
-    "storeUrl": "https://darskeeworks.online/"
   }
 ]
